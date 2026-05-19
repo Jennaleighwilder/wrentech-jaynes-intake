@@ -9,7 +9,7 @@ function json(res, status, body) {
 }
 
 function requireEnv(name) {
-  const value = process.env[name];
+  const value = process.env[name]?.trim();
   if (!value) throw new Error(`Missing ${name}`);
   return value;
 }
@@ -126,7 +126,7 @@ Be specific, warm, and professional. This is a local East Tennessee business —
 
 const FILE_NAME = "jaynes-intake-collection.json";
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   try {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "POST,OPTIONS");
