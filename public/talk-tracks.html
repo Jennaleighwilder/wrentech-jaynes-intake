@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pre-Pitch Talk Tracks · Jennifer + Rachelle</title>
+<title>Pre-Pitch Read · Jennifer + Rachelle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -56,6 +56,22 @@
   }
   .section-title em { font-style: italic; color: #EC8A5E; }
 
+  .opening {
+    background: rgba(255,181,168,0.08);
+    border: 1px solid rgba(255,181,168,0.25);
+    border-radius: 14px;
+    padding: 30px 32px;
+    margin-bottom: 40px;
+  }
+  .opening h3 {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 500;
+    font-size: 24px; color: #FFB5A8; margin: 0 0 14px;
+  }
+  .opening p {
+    font-size: 18px; line-height: 1.55; color: #fff; margin: 0 0 12px;
+  }
+  .opening p:last-child { margin: 0; }
+
   .tier {
     background: rgba(235,213,205,0.05);
     border: 1px solid rgba(235,213,205,0.12);
@@ -83,7 +99,7 @@
   }
   .tier h2 em { font-style: italic; color: #EC8A5E; }
   .tier .say {
-    font-size: 22px; line-height: 1.5; color: #fff;
+    font-size: 21px; line-height: 1.55; color: #fff;
     font-weight: 500;
   }
   .tier .say::before {
@@ -108,19 +124,20 @@
   }
   .pb .they {
     font-family: 'Fraunces', serif; font-style: italic;
-    font-size: 22px; color: #FFB5A8; font-weight: 500;
+    font-size: 21px; color: #FFB5A8; font-weight: 500;
     margin: 0 0 12px; line-height: 1.35;
   }
   .pb .you {
-    font-size: 20px; line-height: 1.5; color: #fff; font-weight: 500;
+    font-size: 19px; line-height: 1.55; color: #fff; font-weight: 500;
     margin: 0;
   }
   .pb .you strong { color: #EC8A5E; font-weight: 700; }
 
   .walkaway {
-    background: linear-gradient(135deg, #C41E2A 0%, #7A1820 100%);
+    background: linear-gradient(135deg, #14403A 0%, #1A4F47 100%);
+    border: 1px solid rgba(255,181,168,0.3);
     border-radius: 16px;
-    padding: 40px 36px 44px;
+    padding: 40px 36px 42px;
     margin-top: 16px;
     text-align: center;
   }
@@ -130,13 +147,13 @@
   }
   .walkaway .line {
     font-family: 'Fraunces', serif; font-weight: 500; font-style: italic;
-    font-size: 34px; line-height: 1.25; color: #fff;
+    font-size: 30px; line-height: 1.3; color: #fff;
     margin: 0 0 18px;
   }
   .walkaway .stop {
-    font-size: 17px; letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.85); font-weight: 600;
-    margin: 0;
+    font-size: 16px; letter-spacing: 0.02em;
+    color: rgba(255,255,255,0.75); font-weight: 500;
+    margin: 0; line-height: 1.55;
   }
 
   .principles {
@@ -152,7 +169,7 @@
   }
   .principles ul { list-style: none; padding: 0; margin: 0; }
   .principles li {
-    font-size: 19px; line-height: 1.5; color: #fff; font-weight: 500;
+    font-size: 18px; line-height: 1.5; color: #fff; font-weight: 500;
     padding: 10px 0 10px 28px; position: relative;
   }
   .principles li::before {
@@ -178,23 +195,25 @@
     .section-title { font-size: 30px; }
     .tier { padding: 24px 22px 26px; }
     .tier h2 { font-size: 26px; }
-    .tier .say { font-size: 19px; }
+    .tier .say { font-size: 18px; }
     .tier .say::before, .tier .say::after { font-size: 50px; }
-    .pb .they { font-size: 19px; }
-    .pb .you { font-size: 18px; }
-    .walkaway .line { font-size: 26px; }
+    .pb .they { font-size: 18px; }
+    .pb .you { font-size: 17px; }
+    .walkaway .line { font-size: 23px; }
     .principles li { font-size: 17px; }
+    .opening p { font-size: 17px; }
   }
   @media print {
     body { background: #fff; color: #000; padding: 0.4in; }
-    .top, .section-title, .tier h2, .pb .they, .walkaway .line { color: #000; }
+    .top, .section-title, .tier h2, .pb .they, .walkaway .line, .opening h3 { color: #000; }
     .tier { background: #f7f3ee; border: 1px solid #ddd; border-left: 6px solid #C41E2A; page-break-inside: avoid; }
     .tier .say { color: #000; }
     .pb { background: #f7f3ee; color: #000; border-left: 4px solid #C41E2A; page-break-inside: avoid; }
     .pb .you { color: #000; }
-    .walkaway { background: #C41E2A !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; page-break-inside: avoid; }
+    .walkaway { background: #14403A !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; page-break-inside: avoid; }
     .principles { background: #fffaf3; color: #000; border: 1px solid #EC8A5E; }
-    .principles li { color: #000; }
+    .principles li, .opening p { color: #000; }
+    .opening { background: #fff7f0; color: #000; border: 1px solid #FFB5A8; }
   }
 </style>
 </head>
@@ -204,15 +223,21 @@
   <div class="top">
     <div class="for">Jennifer + Rachelle · Pre-Pitch Read</div>
     <h1>Read this <em>before you walk in.</em></h1>
-    <p class="meta">Four tier prices. Four scripts. Four pushback answers. One walk-away line. Memorize the walk-away.</p>
+    <p class="meta">Scott is a good man who built something real. This is how to help him see what we built, without pressuring him.</p>
+  </div>
+
+  <div class="opening">
+    <h3>Remember who you're sitting across from.</h3>
+    <p>Scott built Jaynes Flooring with handshakes. He's kind. He's earned every bit of his reputation. And he has no real frame of reference for what any of this costs — because nobody in his world has ever needed to know.</p>
+    <p>Our job today isn't to sell him. Our job is to gently show him what's true: the market has moved, the people who buy floors are looking online now, and we built him something honest he can use. He gets to decide what fits.</p>
   </div>
 
   <div class="principles">
-    <h3>Three rules before you start.</h3>
+    <h3>Three things to keep in mind.</h3>
     <ul>
-      <li>Lead with <strong>Tier 1 · Foundation · $3,000</strong>. That's the recommended default. Do not open with $28K.</li>
-      <li>Make Scott name his budget first. Don't quote a number until he does.</li>
-      <li>When he pushes back, the answer is <strong>"No, the prices are the work."</strong> Don't discount. Don't apologize.</li>
+      <li>Open at <strong>Tier 1 · Foundation · $3,000</strong>. Frame it as the right-sized step, not the cheap one.</li>
+      <li>Ask what he's comfortable spending before you put a price on the table. Let him lead.</li>
+      <li>If a number doesn't feel right to him, that's okay. We're not here to convince him into anything — we're here to give him good information.</li>
     </ul>
   </div>
 
@@ -224,65 +249,65 @@
   <div class="tier">
     <div class="label">Tier 0 · Card · $1,000</div>
     <h2>One page. <em>2–3 days.</em></h2>
-    <div class="say">One page. Your name, phone, address, hours, services, one review, a map. Built in 2 to 3 days. It's a digital business card — it gets you found when someone Googles "Jaynes Flooring" by name. It will not bring you new customers who don't already know your name. This is the absolute minimum to exist online.</div>
+    <div class="say">This one is just so Jaynes exists on the internet — one clean page with your name, phone, address, hours, services, a customer review, and a map. Done in two or three days. Honestly, Scott, if budget is tight this is a fine place to start. It won't bring in many new customers, but it makes sure anyone who hears your name can find you.</div>
   </div>
 
   <div class="tier lead">
-    <div class="label">Tier 1 · Foundation · $3,000<span class="star">Start here</span></div>
-    <h2>Five pages. <em>One week.</em></h2>
-    <div class="say">Five real pages — home, services, about, reviews, contact. Works on every phone. Google Business Profile set up so you show up on Google Maps. A quote-request form that emails Sydnee the second someone fills it in. Live in a week. This is the starting line — when somebody searches "flooring near me" in Greene County, you actually appear. Every other flooring store in the Tri-Cities is at this level. This is where you stop being invisible.</div>
+    <div class="label">Tier 1 · Foundation · $3,000<span class="star">This is the one we'd suggest</span></div>
+    <h2>Five pages. <em>Live in a week.</em></h2>
+    <div class="say">This is the one we think fits Jaynes best. Five real pages — home, services, about, reviews, contact. Works on every phone. We set up your Google Business Profile so you show up on Google Maps. There's a quote form so when someone fills it out, it goes straight to Sydnee's inbox. Live in about a week. This is what every other flooring store in the Tri-Cities already has — it's how you stop being invisible online, without making this a huge investment.</div>
   </div>
 
   <div class="tier">
     <div class="label">Tier 2 · Growth · $8,000–$12,000</div>
-    <h2>Catch up. <em>Pass them.</em></h2>
-    <div class="say">Everything in Foundation, plus a team page, a before-and-after gallery, the brands you carry, an upgraded lead form, Facebook and Instagram business accounts set up properly, and you start showing up in ChatGPT and Claude when people ask them "best flooring store East Tennessee." Two weeks to build. This catches you up to Appalachian Flooring and puts you past Dockery Abbey.</div>
+    <h2>If you want to <em>catch up and pass them.</em></h2>
+    <div class="say">If down the road you want more reach, this adds a team page, a before-and-after gallery, the brands you carry, a stronger lead form, and proper Facebook and Instagram pages set up so the wives and daughters doing the searching actually find you. Two weeks to build. This is where you start passing Appalachian and Dockery on Google. We're not pushing you toward this — it's just here if and when you're ready.</div>
   </div>
 
   <div class="tier">
     <div class="label">Tier 3 · Signature · $28,000</div>
-    <h2>Dominate. <em>4–6 weeks.</em></h2>
-    <div class="say">Everything in Growth, plus a custom sample-ordering app where customers pick five samples online and you ship them — every order is a named lead with their address. A 20-second branded commercial cut for TV, Instagram, Facebook, and TikTok. TikTok account added. The 11-page Market Intelligence Report. Live training session for Sydnee. Four to six weeks. This is the level that makes Jaynes the digital leader in East Tennessee before Floor &amp; Decor shows up.</div>
+    <h2>The full build. <em>4–6 weeks.</em></h2>
+    <div class="say">This is the whole vision — sample-ordering software where customers pick five samples from your site and you ship them, a short branded video for TV and social, TikTok added, the full market research report, and a training session for Sydnee. Four to six weeks. We built it out so you could see what the top end looks like, but we're not expecting you to start here. It's the long-game version if it ever makes sense.</div>
   </div>
 
   <div class="rule"></div>
 
   <div class="section-head">Part 2</div>
-  <h2 class="section-title">When he <em>pushes back.</em></h2>
+  <h2 class="section-title">If he <em>hesitates.</em></h2>
 
   <div class="pb">
-    <p class="they">"I can't pay that much."</p>
-    <p class="you">→ <strong>"What's the budget you're working with?"</strong> Make him name a number first. Then match a tier to it.</p>
+    <p class="they">"That's more than I was thinking."</p>
+    <p class="you">→ <strong>"Totally understand.</strong> What were you picturing in your head? Let's start there and see what fits."</p>
   </div>
 
   <div class="pb">
-    <p class="they">"Can you do the Signature for $5,000?"</p>
-    <p class="you">→ <strong>"No.</strong> The Signature has four to six weeks of custom software work in it. What I can do is start you on Foundation for $3,000 — that gets you properly visible on Google, which is the most important thing — and you upgrade later by paying the difference."</p>
+    <p class="they">"Can you do the bigger one for less?"</p>
+    <p class="you">→ <strong>"I wish we could, Scott.</strong> The Signature has four to six weeks of work in it, including custom software, so we can't move on that price without cutting the work itself. The honest answer is the $3,000 Foundation will do the most important job — getting you found on Google — and you can always add the rest later by paying the difference."</p>
   </div>
 
   <div class="pb">
-    <p class="they">"My nephew can do it for $500."</p>
-    <p class="you">→ <strong>"Good — he'll learn a lot.</strong> The $500 site won't appear on Google and won't bring you customers. When it doesn't work out, I'm still here."</p>
+    <p class="they">"My grandson said he could build me something."</p>
+    <p class="you">→ <strong>"That's wonderful — let him.</strong> If it works out, you've saved money and helped him learn. If you ever want to revisit, we're not going anywhere. We just want what's best for the business."</p>
   </div>
 
   <div class="pb">
-    <p class="they">"Can you discount?"</p>
-    <p class="you">→ <strong>"No. The prices are the work."</strong></p>
+    <p class="they">"Is there any wiggle room?"</p>
+    <p class="you">→ <strong>"On the work, no — the prices reflect what's actually in each tier.</strong> But we can absolutely shape the scope to whatever number works for you. Tell us your number and we'll show you what fits inside it."</p>
   </div>
 
   <div class="rule"></div>
 
   <div class="section-head">Part 3</div>
-  <h2 class="section-title">The <em>walk-away.</em></h2>
+  <h2 class="section-title">If he's <em>not ready.</em></h2>
 
   <div class="walkaway">
-    <div class="k">Say this out loud. Mean it.</div>
-    <p class="line">"I built four real options at four real prices. Pick the one that fits, or pick none. I'd rather you walk away than I undercut what I built."</p>
-    <p class="stop">Then stop talking. Whoever speaks next loses.</p>
+    <div class="k">Say this kindly. Mean it.</div>
+    <p class="line">"Scott, there's no pressure here. We built this because we believe in what you've built — and we wanted you to have honest options. Take it home. Talk to Faye and Sydnee. We'll be here whenever you want to talk again, whether that's next week or next year."</p>
+    <p class="stop">Then let the room breathe. Don't fill the silence. He'll either say a number, ask a question, or thank you — any of those is a good outcome.</p>
   </div>
 
   <div class="end">
-    <div class="sig">You already did the work. Now go close it.</div>
+    <div class="sig">You already did the work. The rest is just being honest with a good man.</div>
     Built by WrenTech · For Jennifer + Rachelle · This morning
   </div>
 
