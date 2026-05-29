@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Pitch Talk Tracks · Jennifer + Rachelle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0E2A26;
+    color: #EBD5CD;
+    line-height: 1.4;
+    padding: 28px 22px 80px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+
+  .top {
+    border-bottom: 2px solid #EC8A5E;
+    padding-bottom: 22px;
+    margin-bottom: 32px;
+  }
+  .top .for {
+    font-size: 13px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: #EC8A5E; font-weight: 700; margin-bottom: 10px;
+  }
+  .top h1 {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: 44px; line-height: 1.05; margin: 0 0 10px;
+    color: #fff; letter-spacing: -0.01em;
+  }
+  .top h1 em { font-style: italic; color: #EC8A5E; }
+  .top .meta {
+    font-size: 15px; color: rgba(235,213,205,0.7); margin: 0;
+  }
+
+  .rule {
+    height: 3px; background: #EC8A5E; opacity: 0.4;
+    margin: 48px 0 36px;
+    max-width: 120px;
+  }
+
+  .section-head {
+    font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: #EC8A5E; font-weight: 700;
+    margin: 0 0 6px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: 38px; line-height: 1.1; color: #fff;
+    margin: 0 0 32px; letter-spacing: -0.01em;
+  }
+  .section-title em { font-style: italic; color: #EC8A5E; }
+
+  .tier {
+    background: rgba(235,213,205,0.05);
+    border: 1px solid rgba(235,213,205,0.12);
+    border-left: 6px solid #EC8A5E;
+    border-radius: 14px;
+    padding: 28px 30px 32px;
+    margin-bottom: 26px;
+  }
+  .tier.lead { border-left-color: #FFB5A8; background: rgba(255,181,168,0.08); }
+  .tier .label {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase;
+    color: #EC8A5E; font-weight: 700; margin-bottom: 8px;
+  }
+  .tier.lead .label { color: #FFB5A8; }
+  .tier .star {
+    display: inline-block; margin-left: 10px; padding: 3px 10px;
+    background: #FFB5A8; color: #0E2A26; border-radius: 4px;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;
+  }
+  .tier h2 {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: 32px; line-height: 1.15; color: #fff;
+    margin: 0 0 18px; letter-spacing: -0.01em;
+  }
+  .tier h2 em { font-style: italic; color: #EC8A5E; }
+  .tier .say {
+    font-size: 22px; line-height: 1.5; color: #fff;
+    font-weight: 500;
+  }
+  .tier .say::before {
+    content: '“';
+    font-family: 'Fraunces', serif;
+    font-size: 64px; line-height: 0; color: #EC8A5E;
+    vertical-align: -22px; margin-right: 8px;
+  }
+  .tier .say::after {
+    content: '”';
+    font-family: 'Fraunces', serif;
+    font-size: 64px; line-height: 0; color: #EC8A5E;
+    vertical-align: -22px; margin-left: 4px;
+  }
+
+  .pb {
+    background: #14403A;
+    border-radius: 12px;
+    padding: 22px 26px 24px;
+    margin-bottom: 16px;
+    border-left: 4px solid #EC8A5E;
+  }
+  .pb .they {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 22px; color: #FFB5A8; font-weight: 500;
+    margin: 0 0 12px; line-height: 1.35;
+  }
+  .pb .you {
+    font-size: 20px; line-height: 1.5; color: #fff; font-weight: 500;
+    margin: 0;
+  }
+  .pb .you strong { color: #EC8A5E; font-weight: 700; }
+
+  .walkaway {
+    background: linear-gradient(135deg, #C41E2A 0%, #7A1820 100%);
+    border-radius: 16px;
+    padding: 40px 36px 44px;
+    margin-top: 16px;
+    text-align: center;
+  }
+  .walkaway .k {
+    font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: #FFB5A8; font-weight: 700; margin-bottom: 18px;
+  }
+  .walkaway .line {
+    font-family: 'Fraunces', serif; font-weight: 500; font-style: italic;
+    font-size: 34px; line-height: 1.25; color: #fff;
+    margin: 0 0 18px;
+  }
+  .walkaway .stop {
+    font-size: 17px; letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.85); font-weight: 600;
+    margin: 0;
+  }
+
+  .principles {
+    background: rgba(236,138,94,0.08);
+    border: 1px solid rgba(236,138,94,0.3);
+    border-radius: 14px;
+    padding: 28px 30px;
+    margin: 40px 0;
+  }
+  .principles h3 {
+    font-family: 'Fraunces', serif; font-weight: 500; font-style: italic;
+    font-size: 24px; color: #EC8A5E; margin: 0 0 18px;
+  }
+  .principles ul { list-style: none; padding: 0; margin: 0; }
+  .principles li {
+    font-size: 19px; line-height: 1.5; color: #fff; font-weight: 500;
+    padding: 10px 0 10px 28px; position: relative;
+  }
+  .principles li::before {
+    content: '✓';
+    position: absolute; left: 0; top: 10px;
+    color: #EC8A5E; font-weight: 700; font-size: 18px;
+  }
+
+  .end {
+    text-align: center; margin-top: 56px;
+    font-size: 14px; color: rgba(235,213,205,0.5);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .end .sig {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 500;
+    font-size: 22px; color: #EC8A5E; text-transform: none; letter-spacing: 0;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 22px 16px 60px; }
+    .top h1 { font-size: 34px; }
+    .section-title { font-size: 30px; }
+    .tier { padding: 24px 22px 26px; }
+    .tier h2 { font-size: 26px; }
+    .tier .say { font-size: 19px; }
+    .tier .say::before, .tier .say::after { font-size: 50px; }
+    .pb .they { font-size: 19px; }
+    .pb .you { font-size: 18px; }
+    .walkaway .line { font-size: 26px; }
+    .principles li { font-size: 17px; }
+  }
+  @media print {
+    body { background: #fff; color: #000; padding: 0.4in; }
+    .top, .section-title, .tier h2, .pb .they, .walkaway .line { color: #000; }
+    .tier { background: #f7f3ee; border: 1px solid #ddd; border-left: 6px solid #C41E2A; page-break-inside: avoid; }
+    .tier .say { color: #000; }
+    .pb { background: #f7f3ee; color: #000; border-left: 4px solid #C41E2A; page-break-inside: avoid; }
+    .pb .you { color: #000; }
+    .walkaway { background: #C41E2A !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; page-break-inside: avoid; }
+    .principles { background: #fffaf3; color: #000; border: 1px solid #EC8A5E; }
+    .principles li { color: #000; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="for">Jennifer + Rachelle · Pre-Pitch Read</div>
+    <h1>Read this <em>before you walk in.</em></h1>
+    <p class="meta">Four tier prices. Four scripts. Four pushback answers. One walk-away line. Memorize the walk-away.</p>
+  </div>
+
+  <div class="principles">
+    <h3>Three rules before you start.</h3>
+    <ul>
+      <li>Lead with <strong>Tier 1 · Foundation · $3,000</strong>. That's the recommended default. Do not open with $28K.</li>
+      <li>Make Scott name his budget first. Don't quote a number until he does.</li>
+      <li>When he pushes back, the answer is <strong>"No, the prices are the work."</strong> Don't discount. Don't apologize.</li>
+    </ul>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="section-head">Part 1</div>
+  <h2 class="section-title">The four tier <em>talk tracks.</em></h2>
+
+  <div class="tier">
+    <div class="label">Tier 0 · Card · $1,000</div>
+    <h2>One page. <em>2–3 days.</em></h2>
+    <div class="say">One page. Your name, phone, address, hours, services, one review, a map. Built in 2 to 3 days. It's a digital business card — it gets you found when someone Googles "Jaynes Flooring" by name. It will not bring you new customers who don't already know your name. This is the absolute minimum to exist online.</div>
+  </div>
+
+  <div class="tier lead">
+    <div class="label">Tier 1 · Foundation · $3,000<span class="star">Start here</span></div>
+    <h2>Five pages. <em>One week.</em></h2>
+    <div class="say">Five real pages — home, services, about, reviews, contact. Works on every phone. Google Business Profile set up so you show up on Google Maps. A quote-request form that emails Sydnee the second someone fills it in. Live in a week. This is the starting line — when somebody searches "flooring near me" in Greene County, you actually appear. Every other flooring store in the Tri-Cities is at this level. This is where you stop being invisible.</div>
+  </div>
+
+  <div class="tier">
+    <div class="label">Tier 2 · Growth · $8,000–$12,000</div>
+    <h2>Catch up. <em>Pass them.</em></h2>
+    <div class="say">Everything in Foundation, plus a team page, a before-and-after gallery, the brands you carry, an upgraded lead form, Facebook and Instagram business accounts set up properly, and you start showing up in ChatGPT and Claude when people ask them "best flooring store East Tennessee." Two weeks to build. This catches you up to Appalachian Flooring and puts you past Dockery Abbey.</div>
+  </div>
+
+  <div class="tier">
+    <div class="label">Tier 3 · Signature · $28,000</div>
+    <h2>Dominate. <em>4–6 weeks.</em></h2>
+    <div class="say">Everything in Growth, plus a custom sample-ordering app where customers pick five samples online and you ship them — every order is a named lead with their address. A 20-second branded commercial cut for TV, Instagram, Facebook, and TikTok. TikTok account added. The 11-page Market Intelligence Report. Live training session for Sydnee. Four to six weeks. This is the level that makes Jaynes the digital leader in East Tennessee before Floor &amp; Decor shows up.</div>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="section-head">Part 2</div>
+  <h2 class="section-title">When he <em>pushes back.</em></h2>
+
+  <div class="pb">
+    <p class="they">"I can't pay that much."</p>
+    <p class="you">→ <strong>"What's the budget you're working with?"</strong> Make him name a number first. Then match a tier to it.</p>
+  </div>
+
+  <div class="pb">
+    <p class="they">"Can you do the Signature for $5,000?"</p>
+    <p class="you">→ <strong>"No.</strong> The Signature has four to six weeks of custom software work in it. What I can do is start you on Foundation for $3,000 — that gets you properly visible on Google, which is the most important thing — and you upgrade later by paying the difference."</p>
+  </div>
+
+  <div class="pb">
+    <p class="they">"My nephew can do it for $500."</p>
+    <p class="you">→ <strong>"Good — he'll learn a lot.</strong> The $500 site won't appear on Google and won't bring you customers. When it doesn't work out, I'm still here."</p>
+  </div>
+
+  <div class="pb">
+    <p class="they">"Can you discount?"</p>
+    <p class="you">→ <strong>"No. The prices are the work."</strong></p>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="section-head">Part 3</div>
+  <h2 class="section-title">The <em>walk-away.</em></h2>
+
+  <div class="walkaway">
+    <div class="k">Say this out loud. Mean it.</div>
+    <p class="line">"I built four real options at four real prices. Pick the one that fits, or pick none. I'd rather you walk away than I undercut what I built."</p>
+    <p class="stop">Then stop talking. Whoever speaks next loses.</p>
+  </div>
+
+  <div class="end">
+    <div class="sig">You already did the work. Now go close it.</div>
+    Built by WrenTech · For Jennifer + Rachelle · This morning
+  </div>
+
+</div>
+</body>
+</html>
