@@ -1072,11 +1072,16 @@ body { font-family:'Inter', sans-serif; background:#0E2A26; color:#EBD5CD; }
    ============================================ */
 .tier-A .a-hero-img,
 .tier-B .b-hero-img {
-  background: url('jaynes/storefront.jpg') center/cover no-repeat !important;
+  aspect-ratio: 4/3 !important;
+  background: #BCD3E5 url('jaynes/storefront.jpg') center/cover no-repeat !important;
+  background-position: center 40% !important;
+  border-radius: 14px;
   box-shadow: 0 24px 60px -20px rgba(15,27,51,0.45);
 }
 .tier-A .a-hero-img::after,
 .tier-B .b-hero-img::after { display:none !important; content:'' !important; }
+/* Cinema reel: keep the JAYNES sign in frame on wide screens */
+.cinema .reel .frame:nth-child(1) { background-position: center 35% !important; }
 
 .tier-A .a-about-pic {
   background: url('jaynes/plaque-50yr.jpg') center/cover no-repeat !important;
@@ -1280,6 +1285,65 @@ body { font-family:'Inter', sans-serif; background:#0E2A26; color:#EBD5CD; }
 }
 @media (max-width: 640px) {
   .tier-W .w-grid, .tier-W .w-tiers, .tier-M .m-stats, .tier-M .m-survival { grid-template-columns: 1fr !important; }
+}
+
+/* ============================================
+   OWNER SHOWCASE — big portraits, used in A & B
+   ============================================ */
+.owners {
+  padding: 80px 44px;
+  background: linear-gradient(180deg, #fff 0%, #F4EEE7 100%);
+}
+.owners-inner { max-width: 1200px; margin: 0 auto; }
+.owners .head { text-align: center; margin-bottom: 48px; }
+.owners .head .k { font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #C41E2A; margin-bottom: 14px; font-weight: 600; }
+.owners .head h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 54px; line-height: 1.05; color: #0F1B33; margin: 0 0 14px; letter-spacing: -0.02em; }
+.owners .head h2 em { font-style: italic; color: #1B3A8C; }
+.owners .head p { font-size: 17px; line-height: 1.65; color: #3D4858; max-width: 680px; margin: 0 auto; }
+.owners .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.own-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 18px 48px -22px rgba(15,27,51,0.22);
+  border: 1px solid #ECE3D9;
+  display: flex;
+  flex-direction: column;
+}
+.own-card .portrait {
+  aspect-ratio: 1/1;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.own-card.scott  .portrait { background-image: url('jaynes/scott.png'); }
+.own-card.faye   .portrait { background-image: url('jaynes/faye.png'); }
+.own-card.sydney .portrait { background-image: url('jaynes/sydnee.png'); }
+.own-card .portrait::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+  background: linear-gradient(180deg, transparent 0%, rgba(15,27,51,0.65) 100%);
+  pointer-events: none;
+}
+.own-card .badge {
+  position: absolute; bottom: 22px; left: 24px; right: 24px; z-index: 2;
+  color: #fff;
+}
+.own-card .badge .gen { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #FFB5A8; font-weight: 600; margin-bottom: 4px; }
+.own-card .badge .nm { font-family: 'Fraunces', serif; font-style: italic; font-weight: 500; font-size: 32px; line-height: 1.1; }
+.own-card .body { padding: 24px 28px 30px; }
+.own-card .body .role {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #C41E2A; font-weight: 600; margin-bottom: 12px;
+}
+.own-card .body .quote {
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 17px; line-height: 1.55;
+  color: #0F1B33; margin: 0 0 14px;
+}
+.own-card .body .meta { font-size: 13px; line-height: 1.55; color: #5C6470; margin: 0; }
+@media (max-width: 980px) {
+  .owners .row { grid-template-columns: 1fr; }
+  .owners .head h2 { font-size: 38px; }
 }
 
 /* ============================================
@@ -1653,6 +1717,41 @@ body { font-family:'Inter', sans-serif; background:#0E2A26; color:#EBD5CD; }
       <div class="a-about-pic"></div>
     </div>
   </section>
+  <section class="owners">
+    <div class="owners-inner">
+      <div class="head">
+        <div class="k">Three generations · One family</div>
+        <h2>The <em>family</em> behind the floor.</h2>
+        <p>You're not buying flooring from a chain. You're buying it from Scott, Faye, and Sydnee — and the same crew that's installed half the homes in Greene County.</p>
+      </div>
+      <div class="row">
+        <div class="own-card scott">
+          <div class="portrait"><div class="badge"><div class="gen">First Generation · Since 1975</div><div class="nm">Scott Jaynes</div></div></div>
+          <div class="body">
+            <div class="role">Owner · Founder</div>
+            <p class="quote">"Install every floor like it's going into our own home."</p>
+            <p class="meta">Fifty years on Andrew Johnson Highway. Built the largest flooring showroom in East Tennessee from a handshake business.</p>
+          </div>
+        </div>
+        <div class="own-card faye">
+          <div class="portrait"><div class="badge"><div class="gen">The Backbone</div><div class="nm">Faye Jaynes</div></div></div>
+          <div class="body">
+            <div class="role">Operations</div>
+            <p class="quote">"The books are straight. The crews are paid. The lights stay on."</p>
+            <p class="meta">Decades of running everything that keeps the doors open. The reason Jaynes never missed a Friday payroll.</p>
+          </div>
+        </div>
+        <div class="own-card sydney">
+          <div class="portrait"><div class="badge"><div class="gen">Next Generation</div><div class="nm">Sydnee Jaynes</div></div></div>
+          <div class="body">
+            <div class="role">Showroom · Sales</div>
+            <p class="quote">"Same family, same standards — built for the next fifty years."</p>
+            <p class="meta">Carrying the Jaynes name forward. The face new customers meet first — and the reason they come back.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <section class="a-reviews">
     <div class="head">
       <div class="k">What our customers say</div>
@@ -1739,6 +1838,41 @@ body { font-family:'Inter', sans-serif; background:#0E2A26; color:#EBD5CD; }
       <div class="b-gal"><div class="cap"><div class="t">Hardwood</div><div class="n">Palmetto Road Collection</div></div></div>
       <div class="b-gal"><div class="cap"><div class="t">Carpet</div><div class="n">Statement Stair Runner</div></div></div>
       <div class="b-gal"><div class="cap"><div class="t">Ceramics</div><div class="n">American Olean Showroom</div></div></div>
+    </div>
+  </section>
+  <section class="owners">
+    <div class="owners-inner">
+      <div class="head">
+        <div class="k">Three generations · One family</div>
+        <h2>Meet the <em>Jayneses.</em></h2>
+        <p>Scott, Faye, and Sydnee. The family on the sign. The reason fifty years of customers came back — and the reason the next fifty will too.</p>
+      </div>
+      <div class="row">
+        <div class="own-card scott">
+          <div class="portrait"><div class="badge"><div class="gen">First Generation · Since 1975</div><div class="nm">Scott Jaynes</div></div></div>
+          <div class="body">
+            <div class="role">Owner · Founder</div>
+            <p class="quote">"Install every floor like it's going into our own home."</p>
+            <p class="meta">Fifty years on Andrew Johnson Highway. Built the largest flooring showroom in East Tennessee — handshake by handshake.</p>
+          </div>
+        </div>
+        <div class="own-card faye">
+          <div class="portrait"><div class="badge"><div class="gen">The Backbone</div><div class="nm">Faye Jaynes</div></div></div>
+          <div class="body">
+            <div class="role">Operations</div>
+            <p class="quote">"The books are straight. The crews are paid. The lights stay on."</p>
+            <p class="meta">The reason Jaynes never missed a Friday payroll in five decades. Runs everything that keeps the doors open.</p>
+          </div>
+        </div>
+        <div class="own-card sydney">
+          <div class="portrait"><div class="badge"><div class="gen">Next Generation</div><div class="nm">Sydnee Jaynes</div></div></div>
+          <div class="body">
+            <div class="role">Showroom · Sales</div>
+            <p class="quote">"Same family, same standards — built for the next fifty years."</p>
+            <p class="meta">The face new customers meet first. The voice on the phone. The reason they come back.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <section class="b-team">
