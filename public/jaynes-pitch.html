@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaynes Flooring · Three WrenTech Offerings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..900;1,9..144,200..900&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin:0; padding:0; }
+body { font-family:'Inter', sans-serif; background:#0E2A26; color:#EBD5CD; }
+
+/* ============ SHELL ============ */
+.shell { position:sticky; top:0; z-index:200; background:#0E2A26; border-bottom:1px solid rgba(235,213,205,0.15); padding:18px 28px; }
+.shell-top { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-bottom:14px; }
+.shell-brand { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
+.shell-brand .mark { font-family:'Fraunces', serif; font-style:italic; font-size:24px; color:#EBD5CD; }
+.shell-brand .div { color:rgba(235,213,205,0.3); }
+.shell-brand .for { font-size:12px; text-transform:uppercase; letter-spacing:0.15em; color:rgba(235,213,205,0.55); }
+.shell-brand .client { font-size:14px; color:#EBD5CD; }
+.shell-meta { font-size:11px; text-transform:uppercase; letter-spacing:0.18em; color:rgba(235,213,205,0.5); }
+.tabs { display:flex; gap:8px; overflow-x:auto; padding-bottom:2px; }
+.tab { background:transparent; border:1px solid rgba(235,213,205,0.25); color:rgba(235,213,205,0.75); font-size:12px; font-weight:500; text-transform:uppercase; letter-spacing:0.12em; padding:10px 16px; border-radius:999px; cursor:pointer; white-space:nowrap; transition: all 0.2s; }
+.tab:hover { border-color:#EC8A5E; color:#EC8A5E; }
+.tab.active { background:#EC8A5E; border-color:#EC8A5E; color:#0E2A26; }
+.tab .price { font-weight:700; margin-right:6px; color:inherit; }
+.preview-note { background:#0E2A26; padding:10px 28px 14px; font-size:11px; color:rgba(235,213,205,0.45); letter-spacing:0.06em; border-bottom:1px solid rgba(235,213,205,0.08); }
+.preview-note strong { color:#EC8A5E; font-weight:600; }
+.tier-banner {
+  padding:14px 32px;
+  font-family:'Inter', sans-serif;
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:12px; letter-spacing:0.08em; gap:14px; flex-wrap:wrap;
+}
+.tier-banner strong { font-weight:700; }
+.options { background:#fff; }
+.option { display:none; }
+.option.active { display:block; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes scaleIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }
+
+/* JF emblem reusable */
+.jf-emblem {
+  width:44px; height:44px; border-radius:50%;
+  background:#1B3A8C; border:3px solid #C41E2A;
+  color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Oswald', sans-serif; font-weight:700; font-size:17px;
+  letter-spacing:0.04em;
+  flex-shrink:0;
+}
+.jf-emblem.lg { width:60px; height:60px; font-size:24px; }
+.jf-emblem.sm { width:36px; height:36px; font-size:14px; border-width:2px; }
+
+/* Photo placeholder pattern - clearly marked for real photos */
+.photo-slot {
+  position:relative;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 18px),
+    repeating-linear-gradient(-45deg, rgba(0,0,0,0.04) 0 2px, transparent 2px 18px);
+}
+
+/* ============================================
+   TIER 0 · CARD · $1,000
+   Single-page digital business card
+   ============================================ */
+.tier-Z { background:#fff; color:#0F1B33; font-family:'Inter', sans-serif; }
+.tier-Z .banner { background:#F0F4FA; color:#1B3A8C; }
+.tier-Z .banner strong { color:#1B3A8C; }
+
+.tier-Z .z-top {
+  background:#1B3A8C; color:#fff;
+  padding:10px 32px;
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:12px; letter-spacing:0.08em;
+  flex-wrap:wrap; gap:10px;
+}
+.tier-Z .z-top a { color:#fff; text-decoration:none; font-weight:600; }
+
+.tier-Z .z-head {
+  background:#fff;
+  padding:36px 32px;
+  display:flex; justify-content:space-between; align-items:center;
+  border-bottom:4px solid #C41E2A;
+}
+.tier-Z .z-head .brand { display:flex; align-items:center; gap:14px; }
+.tier-Z .z-head .nm {
+  font-family:'Fraunces', serif;
+  font-weight:600; font-size:34px;
+  color:#1B3A8C;
+}
+.tier-Z .z-head .est {
+  display:block;
+  font-family:'Inter', sans-serif;
+  font-size:11px; letter-spacing:0.3em; text-transform:uppercase;
+  color:#5C6470; margin-top:2px; font-weight:500;
+}
+.tier-Z .z-head .phone {
+  font-family:'Fraunces', serif;
+  font-weight:600; font-size:26px;
+  color:#C41E2A;
+}
+.tier-Z .z-head .phone small {
+  display:block;
+  font-family:'Inter', sans-serif;
+  font-size:11px; letter-spacing:0.2em; text-transform:uppercase;
+  color:#5C6470;
+  font-weight:500;
+  margin-top:2px;
+}
+
+.tier-Z .z-hero {
+  padding:60px 32px;
+  text-align:center;
+  background:#fff;
+}
+.tier-Z .z-hero .k {
+  font-size:11px; letter-spacing:0.3em; text-transform:uppercase;
+  color:#C41E2A; margin-bottom:18px; font-weight:600;
+}
+.tier-Z .z-hero h1 {
+  font-family:'Fraunces', serif;
+  font-weight:400; font-size:54px; line-height:1.05;
+  margin:0 0 20px;
+  letter-spacing:-0.02em;
+  color:#0F1B33;
+  max-width:780px; margin-left:auto; margin-right:auto;
+}
+.tier-Z .z-hero h1 em { font-style:italic; color:#1B3A8C; }
+.option.active .tier-Z .z-hero h1 { animation: fadeUp 0.8s 0.2s both; }
+.tier-Z .z-hero p {
+  font-size:17px; line-height:1.6;
+  color:#3D4858;
+  max-width:560px; margin:0 auto 28px;
+}
+.tier-Z .z-hero .actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.tier-Z .z-hero .btn-1 {
+  background:#C41E2A; color:#fff;
+  padding:14px 28px; border-radius:4px;
+  font-size:13px; font-weight:600;
+  text-decoration:none;
+}
+.tier-Z .z-hero .btn-2 {
+  background:transparent; color:#1B3A8C;
+  border:2px solid #1B3A8C;
+  padding:12px 26px; border-radius:4px;
+  font-size:13px; font-weight:600;
+  text-decoration:none;
+}
+
+.tier-Z .z-services {
+  padding:50px 32px;
+  background:#F8FAFD;
+}
+.tier-Z .z-services h2 {
+  font-family:'Fraunces', serif;
+  font-weight:400; font-size:32px;
+  text-align:center; margin:0 0 32px;
+  color:#1B3A8C;
+}
+.tier-Z .z-services h2 em { font-style:italic; color:#C41E2A; }
+.tier-Z .z-srv-list {
+  display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;
+  max-width:900px; margin:0 auto;
+}
+.tier-Z .z-srv {
+  background:#fff;
+  padding:18px 20px;
+  border-left:3px solid #C41E2A;
+  border-radius:4px;
+  font-size:15px;
+  color:#0F1B33;
+  font-weight:500;
+}
+
+.tier-Z .z-info {
+  padding:50px 32px;
+  background:#fff;
+  display:grid; grid-template-columns: repeat(3, 1fr); gap:30px;
+  max-width:1100px; margin:0 auto;
+  text-align:center;
+}
+.tier-Z .z-info .item { padding:0 20px; border-right:1px solid #E0E4EA; }
+.tier-Z .z-info .item:last-child { border-right:none; }
+.tier-Z .z-info .item .lb {
+  font-size:11px; letter-spacing:0.24em; text-transform:uppercase;
+  color:#C41E2A; font-weight:700; margin-bottom:12px;
+}
+.tier-Z .z-info .item .v {
+  font-size:16px; line-height:1.6; color:#0F1B33;
+}
+.tier-Z .z-info .item .v strong { display:block; font-family:'Fraunces', serif; font-size:20px; font-weight:600; color:#1B3A8C; margin-bottom:4px; }
+
+.tier-Z .z-rev {
+  background:#0F1B33; color:#fff;
+  padding:50px 32px;
+  text-align:center;
+}
+.tier-Z .z-rev .stars { color:#C41E2A; letter-spacing:4px; font-size:22px; margin-bottom:20px; }
+.tier-Z .z-rev p {
+  font-family:'Fraunces', serif;
+  font-style:italic; font-size:24px; line-height:1.5;
+  max-width:780px; margin:0 auto 16px;
+}
+.tier-Z .z-rev .who { font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:#FFB5A8; font-weight:600; }
+
+.tier-Z .z-map {
+  height:280px;
+  background:linear-gradient(135deg, #C5D7F0 0%, #8FB3E0 100%);
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+.tier-Z .z-map::before {
+  content:''; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.tier-Z .z-map .pin {
+  position:relative; z-index:2;
+  background:#C41E2A; color:#fff;
+  padding:14px 20px;
+  border-radius:999px;
+  font-size:13px; font-weight:600;
+  display:flex; align-items:center; gap:8px;
+  box-shadow:0 8px 24px -6px rgba(196,30,42,0.5);
+}
+.tier-Z .z-map .pin::before { content:'📍'; }
+
+.tier-Z .z-footer {
+  background:#0F1B33;
+  color:rgba(255,255,255,0.7);
+  padding:24px 32px;
+  text-align:center;
+  font-size:12px;
+}
+.tier-Z .z-footer span { color:#FFB5A8; }
+
+/* ============================================
+   TIER 1 · FOUNDATION · $3,000
+   5-page site · brand integration · mobile · SEO · GBP
+   Clean, professional, well-built. Not basic.
+   ============================================ */
+.tier-A { background:#fff; color:#0F1B33; font-family:'Inter', sans-serif; }
+.tier-A .banner { background:#FDF2F0; color:#7A1820; }
+.tier-A .banner strong { color:#C41E2A; }
+
+.tier-A .a-nav {
+  background:#fff;
+  padding:20px 40px;
+  display:flex; justify-content:space-between; align-items:center;
+  border-bottom:2px solid #C41E2A;
+}
+.tier-A .a-nav .brand {
+  display:flex; align-items:center; gap:14px;
+}
+.tier-A .a-nav .nm { font-family:'Fraunces', serif; font-weight:600; font-size:22px; color:#1B3A8C; }
+.tier-A .a-nav .est { display:block; font-family:'Inter', sans-serif; font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:#5C6470; margin-top:1px; font-weight:500; }
+.tier-A .a-nav ul { list-style:none; display:flex; gap:32px; margin:0; padding:0; font-size:13px; font-weight:500; }
+.tier-A .a-nav a { color:#1B3A8C; text-decoration:none; }
+.tier-A .a-nav .cta {
+  background:#C41E2A; color:#fff;
+  padding:10px 22px; border-radius:4px;
+  font-size:12px; font-weight:600; letter-spacing:0.04em;
+  text-decoration:none;
+}
+
+.tier-A .a-hero {
+  background:#fff;
+  padding:80px 40px;
+  display:grid; grid-template-columns: 1fr 1fr; gap:60px; align-items:center;
+  max-width:1300px; margin:0 auto;
+}
+.tier-A .a-hero .k { font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:#C41E2A; margin-bottom:20px; font-weight:600; }
+.tier-A .a-hero h1 {
+  font-family:'Fraunces', serif;
+  font-weight:400; font-size:68px; line-height:1.05;
+  margin:0 0 24px;
+  letter-spacing:-0.02em;
+  color:#0F1B33;
+}
+.tier-A .a-hero h1 em { font-style:italic; color:#1B3A8C; }
+.option.active .tier-A .a-hero h1 { animation: fadeUp 0.8s 0.2s both; }
+.tier-A .a-hero p { font-size:17px; line-height:1.65; color:#3D4858; margin-bottom:30px; max-width:500px; }
+.tier-A .a-hero .actions { display:flex; gap:12px; flex-wrap:wrap; }
+.tier-A .a-hero .btn-1 {
+  background:#1B3A8C; color:#fff;
+  padding:15px 28px; border-radius:4px;
+  font-size:13px; font-weight:600;
+  text-decoration:none;
+}
+.tier-A .a-hero .btn-2 {
+  background:transparent; color:#1B3A8C;
+  border:2px solid #1B3A8C;
+  padding:13px 26px; border-radius:4px;
+  font-size:13px; font-weight:600;
+  text-decoration:none;
+}
+.tier-A .a-hero-img {
+  aspect-ratio: 4/5;
+  background:linear-gradient(135deg, #1B3A8C 0%, #C41E2A 100%);
+  border-radius:12px;
+  position:relative;
+}
+.option.active .tier-A .a-hero-img { animation: scaleIn 0.9s 0.4s both; }
+.tier-A .a-hero-img::after {
+  content:'HERO PHOTO'; position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(255,255,255,0.5); font-size:14px; letter-spacing:0.3em; font-weight:600;
+}
+
+.tier-A .a-services { padding:80px 40px; background:#F8FAFD; }
+.tier-A .a-services .head { text-align:center; max-width:680px; margin:0 auto 50px; }
+.tier-A .a-services .k { font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:#C41E2A; margin-bottom:14px; font-weight:600; }
+.tier-A .a-services h2 { font-family:'Fraunces', serif; font-weight:400; font-size:48px; line-height:1.1; margin:0 0 16px; color:#0F1B33; }
+.tier-A .a-services h2 em { font-style:italic; color:#1B3A8C; }
+.tier-A .a-services .sub { font-size:16px; color:#3D4858; line-height:1.6; }
+.tier-A .a-srv-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; max-width:1100px; margin:0 auto; }
+.tier-A .a-srv {
+  background:#fff;
+  padding:32px 28px;
+  border-radius:10px;
+  border:1px solid #E0E4EA;
+  transition: all 0.25s;
+}
+.tier-A .a-srv:hover { border-color:#C41E2A; transform:translateY(-3px); box-shadow:0 10px 25px -8px rgba(15,27,51,0.1); }
+.tier-A .a-srv .num { font-family:'Fraunces', serif; font-style:italic; color:#C41E2A; font-size:14px; margin-bottom:8px; }
+.tier-A .a-srv h3 { font-family:'Fraunces', serif; font-weight:500; font-size:22px; color:#1B3A8C; margin:0 0 10px; }
+.tier-A .a-srv p { font-size:14px; line-height:1.6; color:#5C6470; margin:0; }
+
+.tier-A .a-about { padding:80px 40px; background:#fff; max-width:1100px; margin:0 auto; }
+.tier-A .a-about-grid { display:grid; grid-template-columns: 1fr 1fr; gap:60px; align-items:center; }
+.tier-A .a-about .k { font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:#C41E2A; margin-bottom:14px; font-weight:600; }
+.tier-A .a-about h2 { font-family:'Fraunces', serif; font-weight:400; font-size:42px; line-height:1.1; color:#0F1B33; margin:0 0 20px; }
+.tier-A .a-about h2 em { font-style:italic; color:#1B3A8C; }
+.tier-A .a-about p { font-size:16px; line-height:1.7; color:#3D4858; margin-bottom:16px; }
+.tier-A .a-about-pic {
+  aspect-ratio: 4/5;
+  background:linear-gradient(160deg, #1B3A8C 0%, #0F1B33 100%);
+  border-radius:12px;
+  position:relative;
+}
+.tier-A .a-about-pic::after { content:'1975'; position:absolute; bottom:30px; left:30px; color:#fff; font-family:'Fraunces', serif; font-size:64px; font-weight:600; }
+
+.tier-A .a-reviews { padding:80px 40px; background:#0F1B33; color:#fff; }
+.tier-A .a-reviews .head { text-align:center; max-width:680px; margin:0 auto 50px; }
+.tier-A .a-reviews .k { font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:#FFB5A8; margin-bottom:14px; font-weight:600; }
+.tier-A .a-reviews h2 { font-family:'Fraunces', serif; font-weight:400; font-size:42px; line-height:1.1; color:#fff; margin:0; }
+.tier-A .a-reviews h2 em { font-style:italic; color:#FFB5A8; }
+.tier-A .a-rev-grid { display:grid; grid-template-columns: 1fr 1fr; gap:30px; max-width:1100px; margin:0 auto; }
+.tier-A .a-rev { background:rgba(255,255,255,0.05); border-left:3px solid #C41E2A; padding:30px; border-radius:0 8px 8px 0; }
+.tier-A .a-rev .stars { color:#C41E2A; letter-spacing:3px; margin-bottom:14px; }
+.tier-A .a-rev p { font-family:'Fraunces', serif; font-style:italic; font-size:18px; line-height:1.55; margin:0 0 18px; }
+.tier-A .a-rev .who { font-size:13px; font-weight:600; color:#fff; }
+.tier-A .a-rev .when { font-size:11px; color:rgba(255,255,255,0.6); letter-spacing:0.1em; margin-top:2px; }
+
+.tier-A .a-contact { padding:80px 40px; background:#fff; text-align:center; }
+.tier-A .a-contact h2 { font-family:'Fraunces', serif; font-weight:400; font-size:48px; line-height:1.1; color:#0F1B33; margin:0 0 24px; }
+.tier-A .a-contact h2 em { font-style:italic; color:#C41E2A; }
+.tier-A .a-contact p { font-size:16px; color:#3D4858; max-width:540px; margin:0 auto 30px; line-height:1.6; }
+.tier-A .a-contact-info {
+  display:grid; grid-template-columns: repeat(3, 1fr); gap:30px;
+  max-width:900px; margin:0 auto;
+}
+.tier-A .a-ci strong { display:block; font-family:'Inter', sans-serif; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#C41E2A; margin-bottom:8px; font-weight:600; }
+.tier-A .a-ci p { font-size:15px; line-height:1.5; color:#3D4858; max-width:none; }
+
+.tier-A .a-footer { background:#0F1B33; color:rgba(255,255,255,0.7); padding:30px 40px; text-align:center; font-size:13px; }
+.tier-A .a-footer span { color:#FFB5A8; }
+
+/* ============================================
+   TIER 2 · GROWTH · $8,000
+   Everything in Foundation + Trust strip, Team, Gallery,
+   Brands, Quote Form, Social setup (FB+IG)
+   ============================================ */
+.tier-B { background:#fff; color:#0F1B33; font-family:'Inter', sans-serif; }
+.tier-B .banner { background:#EBF1FE; color:#0F2A6B; }
+.tier-B .banner strong { color:#1B3A8C; }
+
+.tier-B .b-nav {
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  padding:18px 44px;
+  display:flex; justify-content:space-between; align-items:center;
+  border-bottom:1px solid #E0E4EA;
+}
+.tier-B .b-nav .brand { display:flex; align-items:center; gap:14px; }
+.tier-B .b-nav .nm { font-family:'Fraunces', serif; font-weight:600; font-size:22px; color:#1B3A8C; }
+.tier-B .b-nav .est { display:block; font-family:'Inter', sans-serif; font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:#5C6470; margin-top:1px; font-weight:500; }
+.tier-B .b-nav ul { list-style:none; display:flex; gap:30px; margin:0; padding:0; font-size:13px; font-weight:500; }
+.tier-B .b-nav a { color:#1B3A8C; text-decoration:none; }
+.tier-B .b-nav .cta { background:#C41E2A; color:#fff; padding:11px 22px; border-radius:999px; font-size:12px; font-weight:600; letter-spacing:0.04em; text-decoration:none; }
+
+.tier-B .b-hero { padding:80px 44px 0; background:#fff; max-width:1400px; margin:0 auto; }
+.tier-B .b-hero .row1 { display:grid; grid-template-columns: 1.3fr 1fr; gap:60px; align-items:center; }
+.tier-B .b-hero .k { font-size:11px; letter-spacing:0.32em; text-transform:uppercase; color:#C41E2A; margin-bottom:22px; font-weight:600; }
+.tier-B .b-hero h1 {
+  font-family:'Fraunces', serif;
+  font-weight:400; font-size:88px; line-height:0.98;
+  margin:0 0 26px;
+  letter-spacing:-0.025em;
+  color:#0F1B33;
+}
+.tier-B .b-hero h1 em { font-style:italic; color:#1B3A8C; }
+.option.active .tier-B .b-hero h1 { animation: fadeUp 1.0s 0.3s both; }
+.tier-B .b-hero p { font-size:17px; line-height:1.65; color:#3D4858; margin-bottom:34px; max-width:500px; }
+.tier-B .b-hero .actions { display:flex; gap:12px; flex-wrap:wrap; }
+.tier-B .b-hero .btn-1 {
+  background:#0F1B33; color:#fff;
+  padding:16px 30px; border-radius:999px;
+  font-size:13px; font-weight:600;
+  text-decoration:none;
+}
+.tier-B .b-hero .btn-2 {
+  background:transparent; color:#0F1B33;
+  border:2px solid #0F1B33;
+  padding:14px 28px; border-radius:999px;
+  font-size:13px; font-weight:600;
+  text-decoration:none;
+}
+.tier-B .b-hero-img {
+  aspect-ratio: 4/5;
+  background:linear-gradient(135deg, #1B3A8C, #0F1B33);
+  border-radius:14px;
+  position:relative;
+}
+.option.active .tier-B .b-hero-img { animation: scaleIn 1.0s 0.4s both; }
+.tier-B .b-hero-img::after { content:'HERO PHOTO'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.45); font-size:14px; letter-spacing:0.3em; font-weight:600; }
+
+.tier-B .b-trust {
+  margin-top:60px;
+  background:#fff;
+  border-top:1px solid #E0E4EA;
+  border-bottom:1px solid #E0E4EA;
+  padding:36px 0;
+  display:grid; grid-template-columns: repeat(4, 1fr); gap:24px;
+}
+.tier-B .b-trust .item { text-align:center; padding:0 20px; border-right:1px solid #E0E4EA; }
+.tier-B .b-trust .item:last-child { border-right:none; }
+.tier-B .b-trust .ico {
+  width:48px; height:48px; border-radius:50%;
+  background:#1B3A8C; border:2px solid #C41E2A;
+  color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Oswald', sans-serif; font-weight:700; font-size:16px;
+  margin:0 auto 12px;
+}
+.tier-B .b-trust .lb { font-size:13px; font-weight:600; color:#1B3A8C; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:4px; }
+.tier-B .b-trust .det { font-size:12px; color:#5C6470; line-height:1.5; }
+
+.tier-B .b-services { padding:80px 44px; }
+.tier-B .b-services .head { text-align:center; max-width:680px; margin:0 auto 50px; }
+.tier-B .b-services .k { font-size:11px; letter-spacing:0.32em; text-transform:uppercase; color:#C41E2A; margin-bottom:14px; font-weight:600; }
+.tier-B .b-services h2 { font-family:'Fraunces', serif; font-weight:400; font-size:54px; line-height:1.05; color:#0F1B33; margin:0; letter-spacing:-0.015em; }
+.tier-B .b-services h2 em { font-style:italic; color:#1B3A8C; }
+.tier-B .b-srv-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; max-width:1200px; margin:0 auto; }
+.tier-B .b-srv { background:#fff; padding:36px 30px; border-radius:12px; border:1px solid #E0E4EA; position:relative; transition: all 0.3s; }
+.tier-B .b-srv:hover { border-color:#C41E2A; transform:translateY(-4px); box-shadow:0 16px 32px -10px rgba(15,27,51,0.12); }
+.tier-B .b-srv .num { position:absolute; top:18px; right:24px; font-family:'Fraunces', serif; font-size:18px; color:rgba(27,58,140,0.15); font-weight:600; }
+.tier-B .b-srv h3 { font-family:'Fraunces', serif; font-weight:500; font-size:24px; color:#1B3A8C; margin:0 0 12px; }
+.tier-B .b-srv p { font-size:14px; line-height:1.6; color:#5C6470; margin:0; }
+
+.tier-B .b-gallery { padding:80px 44px; background:#F8FAFD; }
+.tier-B .b-gallery .head { text-align:center; max-width:680px; margin:0 auto 50px; }
+.tier-B .b-gallery .k { font-size:11px; letter-spacing:0.32em; text-transform:uppercase; color:#C41E2A; margin-bottom:14px; font-weight:600; }
+.tier-B .b-gallery h2 { font-family:'Fraunces', serif; font-weight:400; font-size:54px; line-height:1.05; color:#0F1B33; margin:0; }
+.tier-B .b-gallery h2 em { font-style:italic; color:#1B3A8C; }
+.tier-B .b-gal-grid { display:grid; grid-template-columns: 2fr 1fr 1fr; gap:14px; max-width:1300px; margin:0 auto; }
+.tier-B .b-gal {
+  aspect-ratio: 4/3;
+  border-radius:10px;
+  position:relative;
+  overflow:hidden;
+}
+.tier-B .b-gal:nth-child(1) { grid-row: span 2; aspect-ratio: 4/5; background:linear-gradient(135deg, #1B3A8C, #0F1B33); }
+.tier-B .b-gal:nth-child(2) { background:linear-gradient(135deg, #C41E2A, #7A1820); }
+.tier-B .b-gal:nth-child(3) { background:linear-gradient(135deg, #5C6470, #3D4858); }
+.tier-B .b-gal:nth-child(4) { background:linear-gradient(135deg, #1B3A8C, #2D5BB8); }
+.tier-B .b-gal:nth-child(5) { background:linear-gradient(135deg, #0F1B33, #C41E2A); }
+.tier-B .b-gal .cap {
+  position:absolute; bottom:18px; left:20px; right:20px; color:#fff;
+}
+.tier-B .b-gal .cap .t { font-size:10px; letter-spacing:0.24em; text-transform:uppercase; color:rgba(255,255,255,0.85); }
+.tier-B .b-gal .cap .n { font-family:'Fraunces', serif; font-style:italic; font-size:20px; margin-top:4px; }
+
+.tier-B .b-team { padding:80px 44px; background:#fff; }
+.tier-B .b-team .head { text-align:center; max-width:680px; margin:0 auto 50px; }
+.tier-B .b-team .k { font-size:11px; letter-spacing:0.32em; text-transform:uppercase; color:#C41E2A; margin-bottom:14px; font-weight:600; }
+.tier-B .b-team h2 { font-family:'Fraunces', serif; font-weight:400; font-size:54px; line-height:1.05; color:#0F1B33; margin:0; }
+.tier-B .b-team h2 em { font-style:italic; color:#1B3A8C; }
+.tier-B .b-team-grid { display:grid; grid-template-columns: repeat(6, 1fr); gap:24px; max-width:1200px; margin:0 auto; }
+.tier-B .b-mem { text-align:center; }
+.tier-B .b-mem .av {
+  width:80px; height:80px; border-radius:50%;
+  background:#F0F4FA; color:#1B3A8C;
+  border:2px solid #1B3A8C;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces', serif; font-style:italic; font-size:30px; font-weight:500;
+  margin:0 auto 12px;
+}
+.tier-B .b-mem .nm { font-family:'Fraunces', serif; font-size:17px; color:#0F1B33; }
+.tier-B .b-mem .rl { font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#5C6470; margin-top:2px; }
+
+.tier-B .b-brands { padding:60px 44px; background:#F8FAFD; border-top:1px solid #E0E4EA; border-bottom:1px solid #E0E4EA; }
+.tier-B .b-brands .head { text-align:center; margin-bottom:36px; }
+.tier-B .b-brands .k { font-size:11px; letter-spacing:0.32em; text-transform:uppercase; color:#C41E2A; margin-bottom:10px; font-weight:600; }
+.tier-B .b-brands h3 { font-family:'Fraunces', serif; font-weight:400; font-size:32px; color:#0F1B33; margin:0; }
+.tier-B .b-brand-grid { display:grid; grid-template-columns: repeat(7, 1fr); gap:12px; max-width:1100px; margin:0 auto; }
+.tier-B .b-brand {
+  background:#fff;
+  padding:18px 8px;
+  text-align:center;
+  border:1px solid #E0E4EA;
+  border-radius:6px;
+  font-family:'Fraunces', serif;
+  font-weight:500; font-size:14px;
+  color:#1B3A8C;
+  transition: all 0.2s;
+}
+.tier-B .b-brand:hover { background:#C41E2A; color:#fff; border-color:#C41E2A; }
+
+.tier-B .b-quote { padding:80px 44px; background:#0F1B33; color:#fff; }
+.tier-B .b-quote-wrap { display:grid; grid-template-columns: 1fr 1.1fr; gap:60px; max-width:1200px; margin:0 auto; align-items:start; }
+.tier-B .b-quote .k { font-size:11px; letter-spacing:0.32em; text-transform:uppercase; color:#FFB5A8; margin-bottom:14px; font-weight:600; }
+.tier-B .b-quote h2 { font-family:'Fraunces', serif; font-weight:400; font-size:60px; line-height:1; margin:0 0 20px; }
+.tier-B .b-quote h2 em { font-style:italic; color:#FFB5A8; }
+.tier-B .b-quote .lede { font-size:17px; line-height:1.65; color:rgba(255,255,255,0.8); margin-bottom:32px; }
+.tier-B .b-quote-info { background:rgba(255,255,255,0.05); padding:24px 28px; border-left:3px solid #C41E2A; }
+.tier-B .b-quote-info strong { display:block; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#FFB5A8; margin-top:14px; margin-bottom:4px; font-weight:600; }
+.tier-B .b-quote-info strong:first-child { margin-top:0; }
+.tier-B .b-quote-info p { font-size:15px; line-height:1.55; margin:0; color:#fff; }
+.tier-B .b-form { background:#fff; color:#0F1B33; padding:40px; border-radius:12px; border-top:6px solid #C41E2A; }
+.tier-B .b-form h3 { font-family:'Fraunces', serif; font-weight:500; font-size:28px; color:#1B3A8C; margin:0 0 24px; }
+.tier-B .b-form .row { display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:14px; }
+.tier-B .b-form label { display:block; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#5C6470; margin-bottom:7px; font-weight:600; }
+.tier-B .b-form input, .tier-B .b-form select, .tier-B .b-form textarea { width:100%; padding:13px 15px; border:1px solid #E0E4EA; border-radius:4px; font-family:'Inter', sans-serif; font-size:14px; color:#0F1B33; background:#F8FAFD; outline:none; }
+.tier-B .b-form .full { grid-column: 1/-1; }
+.tier-B .b-form textarea { min-height:80px; resize:vertical; }
+.tier-B .b-form .submit {
+  width:100%; background:#C41E2A; color:#fff;
+  padding:16px; border:none; border-radius:4px;
+  font-size:13px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+  cursor:pointer; margin-top:8px;
+}
+
+.tier-B .b-social-bar {
+  background:#1B3A8C; color:#fff;
+  padding:30px 44px;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:30px; flex-wrap:wrap;
+}
+.tier-B .b-social-bar .text {
+  font-family:'Fraunces', serif;
+  font-style:italic;
+  font-size:22px;
+}
+.tier-B .b-social-bar .icons { display:flex; gap:14px; }
+.tier-B .b-social-bar .ico {
+  width:48px; height:48px; border-radius:50%;
+  background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3);
+  color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces', serif; font-weight:600;
+  font-size:18px;
+}
+
+.tier-B .b-footer { background:#0F1B33; padding:30px 44px; text-align:center; color:rgba(255,255,255,0.6); font-size:12px; letter-spacing:0.14em; }
+.tier-B .b-footer span { color:#FFB5A8; }
+
+/* ============================================
+   TIER 3 · SIGNATURE · $28,000
+   Premium agency-tier build. Everything.
+   ============================================ */
+.tier-C { background:#fff; color:#0F1B33; font-family:'Inter', sans-serif; }
+.tier-C .banner { background:linear-gradient(90deg, #C41E2A 0%, #1B3A8C 100%); color:#fff; }
+
+.tier-C .c-nav {
+  position:sticky; top:0; z-index:5;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(14px) saturate(150%);
+  -webkit-backdrop-filter:blur(14px) saturate(150%);
+  padding:18px 48px;
+  display:flex; justify-content:space-between; align-items:center;
+  border-bottom:1px solid rgba(15,27,51,0.08);
+}
+.tier-C .c-nav .crest { display:flex; align-items:center; gap:14px; }
+.tier-C .c-nav .name { font-family:'Fraunces', serif; font-weight:600; font-size:22px; color:#1B3A8C; }
+.tier-C .c-nav .est { display:block; font-family:'Inter', sans-serif; font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:#5C6470; margin-top:1px; font-weight:500; }
+.tier-C .c-nav ul { list-style:none; display:flex; gap:32px; margin:0; padding:0; font-size:13px; font-weight:500; letter-spacing:0.04em; }
+.tier-C .c-nav a { color:#0F1B33; text-decoration:none; }
+.tier-C .c-nav .cta { background:#C41E2A; color:#fff; padding:12px 22px; border-radius:999px; font-size:12px; font-weight:600; letter-spacing:0.06em; text-decoration:none; }
+
+.tier-C .c-hero {
+  padding:80px 48px 30px;
+  background:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.tier-C .c-hero::before {
+  content:''; position:absolute;
+  top:-150px; right:-100px;
+  width:600px; height:600px;
+  background:radial-gradient(circle, rgba(196,30,42,0.06), transparent 60%);
+  pointer-events:none;
+}
+.tier-C .c-hero .k {
+  font-family:'Inter', sans-serif;
+  font-size:11px; letter-spacing:0.36em; text-transform:uppercase;
+  color:#C41E2A; margin-bottom:24px; font-weight:600;
+}
+.option.active .tier-C .c-hero .k { animation: fadeUp 0.8s 0.2s both; }
+.tier-C .c-hero h1 {
+  font-family:'Fraunces', serif;
+  font-variation-settings: 'opsz' 144, 'wght' 300;
+  font-size:124px; line-height:0.94;
+  letter-spacing:-0.03em;
+  margin:0 0 32px;
+  color:#0F1B33;
+  max-width:1200px;
+}
+.tier-C .c-hero h1 em {
+  font-style:italic;
+  font-variation-settings: 'opsz' 144, 'wght' 500;
+  color:#C41E2A;
+}
+.option.active .tier-C .c-hero h1 { animation: fadeUp 1.0s 0.4s both; }
+.tier-C .c-hero .row {
+  display:grid; grid-template-columns: 2fr 1fr; gap:60px; align-items:end;
+  margin-bottom:40px;
+}
+.option.active .tier-C .c-hero .row { animation: fadeUp 0.8s 0.7s both; }
+.tier-C .c-hero p { font-size:18px; line-height:1.65; color:#3D4858; max-width:540px; margin:0; }
+.tier-C .c-hero .stats { display:flex; gap:40px; }
+.tier-C .c-hero .stat { text-align:right; }
+.tier-C .c-hero .stat .n { font-family:'Fraunces', serif; font-size:54px; color:#1B3A8C; line-height:1; font-weight:500; }
+.tier-C .c-hero .stat .l { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#5C6470; margin-top:4px; }
+.tier-C .c-hero .actions { display:flex; gap:14px; }
+.tier-C .c-hero .btn-1 {
+  background:#0F1B33; color:#fff;
+  padding:18px 32px;
+  border-radius:999px;
+  font-size:13px; font-weight:600; letter-spacing:0.08em;
+  text-decoration:none;
+  display:inline-flex; align-items:center; gap:10px;
+}
+.tier-C .c-hero .btn-1::after { content:'→'; }
+.tier-C .c-hero .btn-2 {
+  background:transparent; color:#0F1B33;
+  border:1px solid #0F1B33;
+  padding:17px 31px;
+  border-radius:999px;
+  font-size:13px; font-weight:600; letter-spacing:0.08em;
+  text-decoration:none;
+}
+
+.tier-C .c-bento {
+  padding:40px 48px 80px;
+  display:grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 180px;
+  gap:14px;
+  max-width:1500px;
+  margin:0 auto;
+}
+.tier-C .c-tile { border-radius:24px; padding:30px; overflow:hidden; position:relative; transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.tier-C .c-tile:hover { transform: translateY(-4px); }
+.tier-C .c-tile-1 { grid-column: span 3; grid-row: span 3; background: linear-gradient(135deg, #1B3A8C 0%, #0F1B33 100%); color:#fff; display:flex; flex-direction:column; justify-content:space-between; }
+.tier-C .c-tile-1 .t { font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#FFB5A8; }
+.tier-C .c-tile-1 .h { font-family:'Fraunces', serif; font-size:38px; line-height:1.1; font-weight:400; margin-top:12px; }
+.tier-C .c-tile-1 .h em { font-style:italic; color:#FFB5A8; }
+.tier-C .c-tile-2 { grid-column: span 3; grid-row: span 2; background: linear-gradient(135deg, #C41E2A 0%, #8B141B 100%); color:#fff; display:flex; flex-direction:column; justify-content:space-between; }
+.tier-C .c-tile-2 .h { font-family:'Fraunces', serif; font-style:italic; font-size:26px; line-height:1.4; font-weight:400; }
+.tier-C .c-tile-2 .c { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.85); }
+.tier-C .c-tile-3 { grid-column: span 1; grid-row: span 1; background:#0F1B33; color:#fff; display:flex; flex-direction:column; justify-content:space-between; }
+.tier-C .c-tile-3 .n { font-family:'Fraunces', serif; font-size:42px; color:#fff; font-weight:500; line-height:1; }
+.tier-C .c-tile-3 .l { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.7); }
+.tier-C .c-tile-4 { grid-column: span 2; grid-row: span 1; background:#F8FAFD; border:1px solid #E0E4EA; }
+.tier-C .c-tile-4 .h { font-family:'Fraunces', serif; font-size:14px; color:#1B3A8C; font-weight:500; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center; }
+.tier-C .c-tile-4 .h::after { content:'→'; color:#C41E2A; font-size:18px; }
+.tier-C .c-tile-4 ul { list-style:none; padding:0; margin:0; columns:2; column-gap:16px; }
+.tier-C .c-tile-4 li { font-size:12px; color:#5C6470; padding:3px 0; }
+.tier-C .c-tile-5 { grid-column: span 3; grid-row: span 1; background:#1B3A8C; color:#fff; display:flex; align-items:center; justify-content:space-between; }
+.tier-C .c-tile-5 .l { font-family:'Inter', sans-serif; font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:#FFB5A8; }
+.tier-C .c-tile-5 .marquee { font-family:'Fraunces', serif; font-size:18px; font-style:italic; }
+.tier-C .c-tile-6 { grid-column: span 3; grid-row: span 1; background:#C41E2A; color:#fff; display:flex; align-items:center; justify-content:space-between; }
+.tier-C .c-tile-6 .h { font-family:'Fraunces', serif; font-style:italic; font-size:22px; font-weight:400; }
+.tier-C .c-tile-6 .arrow { width:42px; height:42px; border-radius:50%; background:#fff; color:#C41E2A; display:flex; align-items:center; justify-content:center; font-size:18px; }
+
+.tier-C .c-trust { padding:60px 48px; background:#fff; border-top:1px solid #E0E4EA; border-bottom:1px solid #E0E4EA; }
+.tier-C .c-trust-row { display:grid; grid-template-columns: repeat(4, 1fr); gap:30px; max-width:1200px; margin:0 auto; }
+.tier-C .c-trust-item { text-align:center; padding:0 24px; border-right:1px solid #E0E4EA; }
+.tier-C .c-trust-item:last-child { border-right:none; }
+.tier-C .c-trust-item .ico { width:54px; height:54px; border-radius:50%; background:#1B3A8C; color:#fff; border:3px solid #C41E2A; display:flex; align-items:center; justify-content:center; font-family:'Oswald', sans-serif; font-weight:700; margin:0 auto 16px; }
+.tier-C .c-trust-item .lb { font-size:13px; letter-spacing:0.16em; text-transform:uppercase; font-weight:600; color:#1B3A8C; margin-bottom:6px; }
+.tier-C .c-trust-item .det { font-size:13px; line-height:1.5; color:#5C6470; }
+
+.tier-C .c-samples {
+  padding:80px 48px;
+  background:#0F1B33; color:#fff;
+}
+.tier-C .c-samples-wrap { display:grid; grid-template-columns: 1.2fr 1fr; gap:60px; align-items:center; max-width:1300px; margin:0 auto; }
+.tier-C .c-samples .k { font-family:'Inter', sans-serif; font-size:11px; letter-spacing:0.32em; text-transform:uppercase; color:#FFB5A8; margin-bottom:16px; font-weight:600; }
+.tier-C .c-samples h2 { font-family:'Fraunces', serif; font-weight:400; font-size:64px; line-height:1.05; margin:0 0 22px; letter-spacing:-0.015em; }
+.tier-C .c-samples h2 em { font-style:italic; color:#FFB5A8; }
+.tier-C .c-samples p { font-size:17px; line-height:1.7; color:rgba(255,255,255,0.85); margin-bottom:28px; }
+.tier-C .c-samples .btn { background:#C41E2A; color:#fff; padding:18px 32px; border-radius:999px; font-size:13px; font-weight:600; letter-spacing:0.08em; text-decoration:none; }
+.tier-C .c-sample-preview {
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,181,168,0.3);
+  border-radius:18px;
+  padding:30px;
+}
+.tier-C .c-sample-preview .label { font-family:'Inter', sans-serif; font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#FFB5A8; margin-bottom:14px; }
+.tier-C .c-sample-preview .grid { display:grid; grid-template-columns: repeat(5, 1fr); gap:10px; margin-bottom:18px; }
+.tier-C .c-sample-preview .swatch { aspect-ratio:1; border-radius:8px; background:linear-gradient(135deg, #8B6F4F, #C9A574); position:relative; }
+.tier-C .c-sample-preview .swatch:nth-child(2) { background:linear-gradient(135deg, #5C4530, #8B6F4F); }
+.tier-C .c-sample-preview .swatch:nth-child(3) { background:linear-gradient(135deg, #B89570, #E8C9A0); }
+.tier-C .c-sample-preview .swatch:nth-child(4) { background:linear-gradient(135deg, #6B5A45, #A8927A); }
+.tier-C .c-sample-preview .swatch:nth-child(5) { background:linear-gradient(135deg, #3D2918, #7A5C3E); }
+.tier-C .c-sample-preview .row { display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid rgba(255,255,255,0.15); }
+.tier-C .c-sample-preview .cart { font-size:13px; color:rgba(255,255,255,0.85); }
+.tier-C .c-sample-preview .checkout { background:#C41E2A; color:#fff; padding:8px 14px; border-radius:4px; font-size:12px; font-weight:600; }
+
+.tier-C .c-commercial { padding:80px 48px; background:#fff; }
+.tier-C .c-commercial .head { text-align:center; max-width:680px; margin:0 auto 50px; }
+.tier-C .c-commercial .k { font-size:11px; letter-spacing:0.32em; text-transform:uppercase; color:#C41E2A; margin-bottom:14px; font-weight:600; }
+.tier-C .c-commercial h2 { font-family:'Fraunces', serif; font-weight:400; font-size:54px; line-height:1.05; color:#0F1B33; margin:0; }
+.tier-C .c-commercial h2 em { font-style:italic; color:#1B3A8C; }
+.tier-C .c-com-frame { max-width:980px; margin:0 auto; aspect-ratio: 16/9; background:linear-gradient(135deg, #0F1B33 0%, #1B3A8C 60%, #C41E2A 100%); border-radius:14px; position:relative; overflow:hidden; }
+.tier-C .c-com-frame::after { content:'▶  20-sec commercial spot'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.9); font-family:'Fraunces', serif; font-style:italic; font-size:24px; }
+
+.tier-C .c-team {
+  padding:80px 48px;
+  background:#0F1B33; color:#fff;
+}
+.tier-C .c-team-h { display:flex; justify-content:space-between; align-items:end; margin-bottom:40px; flex-wrap:wrap; gap:20px; }
+.tier-C .c-team-h h2 { font-family:'Fraunces', serif; font-weight:400; font-size:64px; line-height:1; margin:0; }
+.tier-C .c-team-h h2 em { font-style:italic; color:#FFB5A8; }
+.tier-C .c-team-h p { font-family:'Inter', sans-serif; font-size:14px; max-width:300px; color:rgba(255,255,255,0.75); line-height:1.6; margin:0; }
+.tier-C .c-team-grid { display:grid; grid-template-columns: repeat(6, 1fr); gap:24px; }
+.tier-C .c-mem { text-align:center; }
+.tier-C .c-mem .av {
+  width:74px; height:74px; border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,181,168,0.4);
+  color:#FFB5A8;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces', serif; font-style:italic; font-size:24px;
+  margin:0 auto 10px;
+}
+.tier-C .c-mem .nm { font-family:'Fraunces', serif; font-size:16px; font-weight:500; }
+.tier-C .c-mem .rl { font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,181,168,0.7); margin-top:2px; }
+
+.tier-C .c-cta {
+  padding:90px 48px;
+  background:linear-gradient(135deg, #1B3A8C 0%, #0F1B33 100%);
+  color:#fff;
+  text-align:center;
+}
+.tier-C .c-cta h2 { font-family:'Fraunces', serif; font-weight:300; font-size:84px; line-height:1; margin:0 0 24px; }
+.tier-C .c-cta h2 em { font-style:italic; color:#FFB5A8; }
+.tier-C .c-cta p { font-size:17px; max-width:540px; margin:0 auto 36px; color:rgba(255,255,255,0.85); }
+.tier-C .c-cta .btn { background:#C41E2A; color:#fff; padding:18px 36px; border-radius:999px; font-size:13px; font-weight:600; letter-spacing:0.08em; text-decoration:none; }
+.tier-C .c-footer { background:#000; color:rgba(255,255,255,0.6); padding:24px 48px; text-align:center; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; }
+.tier-C .c-footer span { color:#FFB5A8; font-style:italic; font-family:'Fraunces', serif; text-transform:none; letter-spacing:0; }
+
+/* ============================================
+   FUNCTIONAL SAMPLE-ORDERING MODAL (Tier C)
+   Click "Order Free Samples" → modal opens
+   Pick swatches → cart counts up → checkout flow
+   ============================================ */
+.sample-modal {
+  position:fixed; inset:0; z-index:1000;
+  background:rgba(15,27,51,0.7);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  display:none;
+  align-items:center; justify-content:center;
+  padding:20px;
+  animation: fadeUp 0.3s both;
+}
+.sample-modal.open { display:flex; }
+.sample-modal .panel {
+  background:#fff;
+  border-radius:18px;
+  max-width:840px; width:100%;
+  max-height:90vh;
+  overflow:auto;
+  display:flex; flex-direction:column;
+  position:relative;
+}
+.sample-modal .head {
+  padding:24px 32px;
+  border-bottom:1px solid #E0E4EA;
+  display:flex; justify-content:space-between; align-items:center;
+  background:#FFFFFF;
+  border-radius:18px 18px 0 0;
+  position:sticky; top:0; z-index:2;
+}
+.sample-modal .head h3 {
+  font-family:'Fraunces', serif;
+  font-weight:500; font-size:24px;
+  color:#0F1B33; margin:0;
+}
+.sample-modal .head .cart-pill {
+  background:#1B3A8C; color:#fff;
+  padding:8px 18px;
+  border-radius:999px;
+  font-size:13px; font-weight:600;
+}
+.sample-modal .head .cart-pill.full { background:#C41E2A; }
+.sample-modal .close {
+  background:#F0F4FA; color:#1B3A8C;
+  width:34px; height:34px; border-radius:50%;
+  border:none;
+  font-size:18px; font-weight:700;
+  cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  margin-left:14px;
+}
+.sample-modal .body { padding:24px 32px; }
+.sample-modal .intro {
+  font-size:14px; color:#5C6470;
+  line-height:1.55;
+  background:#FAF7F3; border-left:3px solid #C41E2A;
+  padding:14px 16px;
+  border-radius:0 8px 8px 0;
+  margin-bottom:24px;
+}
+.sample-modal .category {
+  margin-bottom:24px;
+}
+.sample-modal .category .cat-h {
+  font-family:'Fraunces', serif;
+  font-weight:500; font-size:18px;
+  color:#1B3A8C;
+  margin-bottom:12px;
+  padding-bottom:8px;
+  border-bottom:1px solid #E0E4EA;
+}
+.sample-modal .swatches {
+  display:grid; grid-template-columns: repeat(5, 1fr); gap:8px;
+}
+.sample-modal .swatch {
+  aspect-ratio:1;
+  border-radius:8px;
+  border:2px solid transparent;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition: all 0.2s;
+}
+.sample-modal .swatch:hover { transform: translateY(-2px); }
+.sample-modal .swatch.selected {
+  border-color:#C41E2A;
+  box-shadow:0 0 0 3px rgba(196,30,42,0.2);
+}
+.sample-modal .swatch.selected::after {
+  content:'✓';
+  position:absolute; top:4px; right:4px;
+  background:#C41E2A; color:#fff;
+  width:22px; height:22px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700;
+}
+.sample-modal .swatch .nm {
+  position:absolute; bottom:4px; left:6px; right:6px;
+  color:#fff;
+  font-size:10px;
+  font-weight:600;
+  text-shadow:0 1px 3px rgba(0,0,0,0.6);
+  letter-spacing:0.02em;
+}
+/* swatch palette - rotating wood/tile/carpet tones */
+.sample-modal .swatch[data-type="hw"] { background:linear-gradient(135deg, #8B6F4F, #C9A574); }
+.sample-modal .swatch[data-type="hw-2"] { background:linear-gradient(135deg, #5C4530, #8B6F4F); }
+.sample-modal .swatch[data-type="hw-3"] { background:linear-gradient(135deg, #B89570, #E8C9A0); }
+.sample-modal .swatch[data-type="hw-4"] { background:linear-gradient(135deg, #6B5A45, #A8927A); }
+.sample-modal .swatch[data-type="hw-5"] { background:linear-gradient(135deg, #3D2918, #7A5C3E); }
+.sample-modal .swatch[data-type="lvp"] { background:linear-gradient(135deg, #4A3A2D, #7B6555); }
+.sample-modal .swatch[data-type="lvp-2"] { background:linear-gradient(135deg, #7B6555, #B89570); }
+.sample-modal .swatch[data-type="lvp-3"] { background:linear-gradient(135deg, #2A2520, #5C4530); }
+.sample-modal .swatch[data-type="lvp-4"] { background:linear-gradient(135deg, #9C8268, #D6C2A0); }
+.sample-modal .swatch[data-type="lvp-5"] { background:linear-gradient(135deg, #443728, #7E6850); }
+.sample-modal .swatch[data-type="carp"] { background:linear-gradient(135deg, #C5C5BD, #E0DCD0); }
+.sample-modal .swatch[data-type="carp-2"] { background:linear-gradient(135deg, #8E8D85, #B5B3A8); }
+.sample-modal .swatch[data-type="carp-3"] { background:linear-gradient(135deg, #5F5C55, #8E8D85); }
+.sample-modal .swatch[data-type="carp-4"] { background:linear-gradient(135deg, #D2C9B8, #F0E8D0); }
+.sample-modal .swatch[data-type="carp-5"] { background:linear-gradient(135deg, #6E5F4A, #A89478); }
+.sample-modal .swatch[data-type="tile"] { background:linear-gradient(135deg, #D6D2C5, #F0EDE3); }
+.sample-modal .swatch[data-type="tile-2"] { background:linear-gradient(135deg, #4E5A6A, #7C8C9E); }
+.sample-modal .swatch[data-type="tile-3"] { background:linear-gradient(135deg, #B5A89A, #E0D5C5); }
+.sample-modal .swatch[data-type="tile-4"] { background:linear-gradient(135deg, #2C3845, #4E5A6A); }
+.sample-modal .swatch[data-type="tile-5"] { background:linear-gradient(135deg, #82716A, #BAA89E); }
+.sample-modal .swatch[data-type="lam"] { background:linear-gradient(135deg, #8B7355, #C5A878); }
+.sample-modal .swatch[data-type="lam-2"] { background:linear-gradient(135deg, #5E4A35, #8B7355); }
+.sample-modal .swatch[data-type="lam-3"] { background:linear-gradient(135deg, #A8916F, #DBC4A0); }
+.sample-modal .swatch[data-type="lam-4"] { background:linear-gradient(135deg, #6E5840, #9C815F); }
+.sample-modal .swatch[data-type="lam-5"] { background:linear-gradient(135deg, #3A2D20, #6E5840); }
+.sample-modal .swatch[data-type="com"] { background:linear-gradient(135deg, #4A4A4A, #7C7C7C); }
+.sample-modal .swatch[data-type="com-2"] { background:linear-gradient(135deg, #2E3540, #4F5A6A); }
+.sample-modal .swatch[data-type="com-3"] { background:linear-gradient(135deg, #6F6F6F, #A0A0A0); }
+.sample-modal .swatch[data-type="com-4"] { background:linear-gradient(135deg, #4C5340, #76836A); }
+.sample-modal .swatch[data-type="com-5"] { background:linear-gradient(135deg, #1F2630, #404A5C); }
+
+.sample-modal .foot {
+  padding:18px 32px;
+  border-top:1px solid #E0E4EA;
+  background:#FAFAFA;
+  border-radius:0 0 18px 18px;
+  display:flex; justify-content:space-between; align-items:center;
+  position:sticky; bottom:0;
+}
+.sample-modal .foot .summary {
+  font-size:13px; color:#5C6470;
+}
+.sample-modal .foot .summary strong { color:#0F1B33; font-size:15px; }
+.sample-modal .foot .checkout {
+  background:#C41E2A; color:#fff;
+  padding:14px 28px;
+  border-radius:999px;
+  border:none;
+  font-size:13px; font-weight:700;
+  letter-spacing:0.08em; text-transform:uppercase;
+  cursor:pointer;
+  transition: all 0.2s;
+}
+.sample-modal .foot .checkout:disabled {
+  background:#D9D5CE; color:#9098A4; cursor:not-allowed;
+}
+.sample-modal .foot .checkout:not(:disabled):hover { transform: translateY(-1px); }
+
+.sample-modal .checkout-form {
+  padding:30px 32px;
+  display:none;
+}
+.sample-modal .checkout-form.open { display:block; }
+.sample-modal .checkout-form .row {
+  display:grid; grid-template-columns: 1fr 1fr; gap:12px;
+  margin-bottom:12px;
+}
+.sample-modal .checkout-form .full { grid-column:1/-1; }
+.sample-modal .checkout-form label {
+  display:block;
+  font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
+  color:#5C6470; margin-bottom:6px; font-weight:600;
+}
+.sample-modal .checkout-form input {
+  width:100%; padding:12px 14px;
+  border:1px solid #E0E4EA;
+  border-radius:6px;
+  font-family:'Inter', sans-serif;
+  font-size:14px;
+  color:#0F1B33;
+  background:#FAFAFA;
+  outline:none;
+}
+.sample-modal .checkout-form input:focus {
+  border-color:#C41E2A; background:#fff;
+  box-shadow:0 0 0 3px rgba(196,30,42,0.1);
+}
+.sample-modal .checkout-form .submit-btn {
+  width:100%; background:#C41E2A; color:#fff;
+  padding:16px; border:none; border-radius:6px;
+  font-size:13px; font-weight:700;
+  letter-spacing:0.12em; text-transform:uppercase;
+  cursor:pointer;
+  margin-top:8px;
+}
+
+.sample-modal .success {
+  padding:60px 40px;
+  text-align:center;
+  display:none;
+}
+.sample-modal .success.open { display:block; }
+.sample-modal .success .check {
+  width:80px; height:80px; border-radius:50%;
+  background:#1B3A8C; color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:36px; font-weight:700;
+  margin:0 auto 24px;
+}
+.sample-modal .success h3 {
+  font-family:'Fraunces', serif;
+  font-weight:400; font-size:32px;
+  color:#0F1B33; margin:0 0 14px;
+}
+.sample-modal .success h3 em { font-style:italic; color:#C41E2A; }
+.sample-modal .success p {
+  font-size:15px; line-height:1.6; color:#3D4858;
+  max-width:420px; margin:0 auto 24px;
+}
+.sample-modal .success .done-btn {
+  background:#0F1B33; color:#fff;
+  padding:13px 28px; border-radius:999px; border:none;
+  font-size:13px; font-weight:600;
+  cursor:pointer;
+}
+
+/* ============================================
+   COMPARISON TAB — pick your tier
+   ============================================ */
+.compare { padding:60px 40px; background:#fff; color:#0F1B33; }
+.compare .head { text-align:center; max-width:760px; margin:0 auto 50px; }
+.compare .head .k { font-size:11px; letter-spacing:0.32em; text-transform:uppercase; color:#C41E2A; margin-bottom:14px; font-weight:600; }
+.compare h2 { font-family:'Fraunces', serif; font-weight:400; font-size:64px; line-height:1.05; margin:0 0 18px; }
+.compare h2 em { font-style:italic; color:#1B3A8C; }
+.compare .head p { font-size:17px; line-height:1.65; color:#3D4858; margin:0; }
+.compare .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:18px; max-width:1500px; margin:0 auto 60px; }
+.compare .card .price { font-size:42px; }
+.compare .card .pitch { font-size:14px; }
+.compare .card li { font-size:13px; }
+.compare .card { border:1px solid #E0E4EA; padding:36px 32px; border-radius:18px; display:flex; flex-direction:column; background:#fff; transition: all 0.3s; }
+.compare .card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -16px rgba(15,27,51,0.18); }
+.compare .card.recommended { border:3px solid #C41E2A; background:linear-gradient(180deg, #fff 0%, #FFF8F0 100%); position:relative; }
+.compare .card.recommended::before { content:'MOST POPULAR'; position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:#C41E2A; color:#fff; padding:6px 14px; border-radius:999px; font-size:10px; letter-spacing:0.22em; font-weight:700; }
+.compare .card .name { font-family:'Inter', sans-serif; font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:#1B3A8C; margin-bottom:6px; font-weight:600; }
+.compare .card .price { font-family:'Fraunces', serif; font-weight:500; font-size:58px; color:#0F1B33; line-height:1; }
+.compare .card .price small { font-size:14px; color:#5C6470; font-weight:400; }
+.compare .card.recommended .price { color:#C41E2A; }
+.compare .card .pitch { font-family:'Fraunces', serif; font-style:italic; font-size:18px; color:#3D4858; margin:16px 0 24px; }
+.compare .card .pages { font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:#5C6470; padding-bottom:20px; margin-bottom:20px; border-bottom:1px solid #E0E4EA; font-weight:600; }
+.compare .card ul { list-style:none; padding:0; margin:0 0 28px; flex:1; }
+.compare .card li { font-size:14px; padding:8px 0; color:#0F1B33; display:flex; gap:12px; line-height:1.5; }
+.compare .card li::before { content:'✓'; color:#1B3A8C; font-weight:700; flex-shrink:0; }
+.compare .card.recommended li::before { color:#C41E2A; }
+.compare .card li.no { color:#9098A4; }
+.compare .card li.no::before { content:'—'; color:#9098A4; }
+.compare .card .pick {
+  display:block; text-align:center;
+  background:#0F1B33; color:#fff;
+  padding:16px; border-radius:999px;
+  font-size:13px; font-weight:600; letter-spacing:0.08em;
+  text-decoration:none;
+}
+.compare .card.recommended .pick { background:#C41E2A; }
+.compare .strategy { background:#0F1B33; color:#fff; padding:50px 40px; border-radius:18px; max-width:1200px; margin:0 auto; }
+.compare .strategy .k { font-size:11px; letter-spacing:0.32em; text-transform:uppercase; color:#FFB5A8; margin-bottom:14px; font-weight:600; }
+.compare .strategy h3 { font-family:'Fraunces', serif; font-weight:400; font-size:42px; line-height:1.15; margin:0 0 18px; }
+.compare .strategy h3 em { font-style:italic; color:#FFB5A8; }
+.compare .strategy p { font-size:16px; line-height:1.7; color:rgba(255,255,255,0.85); max-width:840px; }
+
+@media (max-width: 1000px) {
+  .tier-Z .z-srv-list, .tier-Z .z-info,
+  .tier-A .a-hero, .tier-A .a-about-grid, .tier-A .a-srv-grid, .tier-A .a-rev-grid, .tier-A .a-contact-info,
+  .tier-B .b-hero .row1, .tier-B .b-trust, .tier-B .b-srv-grid, .tier-B .b-gal-grid, .tier-B .b-team-grid, .tier-B .b-brand-grid, .tier-B .b-quote-wrap, .tier-B .b-form .row,
+  .tier-C .c-hero .row, .tier-C .c-trust-row, .tier-C .c-samples-wrap, .tier-C .c-team-grid,
+  .compare .grid,
+  .sample-modal .checkout-form .row {
+    grid-template-columns: 1fr !important;
+  }
+  .compare .grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .tier-B .b-team-grid, .tier-C .c-team-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  .tier-B .b-brand-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .tier-C .c-bento { grid-template-columns: repeat(2, 1fr) !important; grid-auto-rows: 160px !important; }
+  .tier-C .c-tile { grid-column: span 2 !important; grid-row: span 2 !important; }
+  .sample-modal .swatches { grid-template-columns: repeat(3, 1fr) !important; }
+  .tier-A .a-hero h1, .tier-B .b-hero h1, .tier-C .c-hero h1, .compare h2 { font-size:46px !important; }
+  .tier-Z .z-hero h1 { font-size:38px !important; }
+  .tier-C .c-cta h2 { font-size:48px !important; }
+  .tier-Z .z-head, .tier-A .a-nav ul, .tier-B .b-nav ul, .tier-C .c-nav ul { display:none; }
+  .tier-Z .z-head { display:flex; flex-direction:column; gap:18px; }
+}
+
+/* ============================================
+   REAL PHOTOS — overrides placeholder gradients
+   Paths are relative: served from /jaynes/
+   ============================================ */
+.tier-A .a-hero-img,
+.tier-B .b-hero-img {
+  background: url('jaynes/storefront.jpg') center/cover no-repeat !important;
+  box-shadow: 0 24px 60px -20px rgba(15,27,51,0.45);
+}
+.tier-A .a-hero-img::after,
+.tier-B .b-hero-img::after { display:none !important; content:'' !important; }
+
+.tier-A .a-about-pic {
+  background: url('jaynes/plaque-50yr.jpg') center/cover no-repeat !important;
+  box-shadow: 0 18px 50px -20px rgba(15,27,51,0.4);
+}
+.tier-A .a-about-pic::after { display:none !important; content:'' !important; }
+
+/* Tier B gallery — fill 5 cells with real product photography */
+.tier-B .b-gal { background-position:center !important; background-size:cover !important; background-repeat:no-repeat !important; }
+.tier-B .b-gal:nth-child(1) { background-image: url('jaynes/choice-hardwood.png') !important; }
+.tier-B .b-gal:nth-child(2) { background-image: url('jaynes/landmark-ceramics.png') !important; }
+.tier-B .b-gal:nth-child(3) { background-image: url('jaynes/palmetto-road.png') !important; }
+.tier-B .b-gal:nth-child(4) { background-image: url('jaynes/leopard-stairs.png') !important; }
+.tier-B .b-gal:nth-child(5) { background-image: url('jaynes/american-olean.png') !important; }
+.tier-B .b-gal .cap { background: linear-gradient(180deg, transparent 0%, rgba(15,27,51,0.85) 100%) !important; }
+
+/* Team portraits — Scott / Faye / Sydney get real headshots */
+.tier-B .b-mem .av.photo,
+.tier-C .c-mem .av.photo {
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  color: transparent !important;
+  border: 2px solid #C41E2A !important;
+}
+.tier-B .b-mem .av.photo.scott,  .tier-C .c-mem .av.photo.scott  { background-image: url('jaynes/scott.png')  !important; }
+.tier-B .b-mem .av.photo.faye,   .tier-C .c-mem .av.photo.faye   { background-image: url('jaynes/faye.png')   !important; }
+.tier-B .b-mem .av.photo.sydney, .tier-C .c-mem .av.photo.sydney { background-image: url('jaynes/sydnee.png') !important; }
+
+/* Tier C bento — featured tile gets the aerial */
+.tier-C .c-tile-1 {
+  background-image: linear-gradient(180deg, rgba(15,27,51,0.4), rgba(15,27,51,0.75)), url('jaynes/aerial.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Tier C commercial-spot frame — uses showroom collage */
+.tier-C .c-com-frame {
+  background: url('jaynes/showroom-collage.png') center/cover no-repeat !important;
+  box-shadow: 0 24px 60px -20px rgba(15,27,51,0.5);
+}
+.tier-C .c-com-frame::after {
+  background: linear-gradient(180deg, transparent 50%, rgba(15,27,51,0.65) 100%) !important;
+}
+
+/* ============================================
+   PITCH AUDIO PLAYER (intro card)
+   ============================================ */
+.pitch-card {
+  background: linear-gradient(135deg, #0E2A26 0%, #14403A 60%, #1A4F47 100%);
+  border-bottom: 1px solid rgba(235,213,205,0.15);
+  padding: 22px 28px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 22px;
+  align-items: center;
+  color: #EBD5CD;
+}
+.pitch-card .pitch-portrait {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: url('jaynes/scott.png') center/cover no-repeat;
+  border: 2px solid #EC8A5E;
+  flex-shrink: 0;
+}
+.pitch-card .pitch-copy .k {
+  font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: #EC8A5E; font-weight: 600; margin-bottom: 4px;
+}
+.pitch-card .pitch-copy h3 {
+  font-family: 'Fraunces', serif; font-weight: 500; font-style: italic;
+  font-size: 20px; margin: 0; color: #EBD5CD; line-height: 1.3;
+}
+.pitch-card .pitch-copy p {
+  margin: 4px 0 0; font-size: 13px; color: rgba(235,213,205,0.75); line-height: 1.5;
+}
+.pitch-card audio {
+  height: 44px;
+  border-radius: 999px;
+  outline: none;
+  filter: invert(0.92) hue-rotate(180deg);
+}
+@media (max-width: 720px) {
+  .pitch-card { grid-template-columns: 1fr; gap: 14px; }
+  .pitch-card audio { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <div class="shell-top">
+    <div class="shell-brand">
+      <span class="mark">WrenTech</span>
+      <span class="div">·</span>
+      <span class="for">Three Offerings For</span>
+      <span class="client">Jaynes Flooring</span>
+    </div>
+    <div class="shell-meta">Pick your tier · Built by WrenTech</div>
+  </div>
+  <div class="tabs">
+    <button class="tab" data-opt="Z"><span class="price">$1K</span>Card</button>
+    <button class="tab" data-opt="A"><span class="price">$3K</span>Foundation</button>
+    <button class="tab" data-opt="B"><span class="price">$8-12K</span>Growth</button>
+    <button class="tab" data-opt="C"><span class="price">$28K</span>Signature</button>
+    <button class="tab active" data-opt="X"><span class="price">⚖</span>Compare</button>
+  </div>
+</div>
+<div class="pitch-card">
+  <div class="pitch-portrait" aria-hidden="true"></div>
+  <div class="pitch-copy">
+    <div class="k">A quick word for Scott</div>
+    <h3>Press play — Jennifer walks you through the four offerings.</h3>
+    <p>Two minutes. Family-owned to family-owned. Then scroll any tier below to see what it actually looks like built.</p>
+  </div>
+  <audio controls preload="metadata" src="jaynes/pitch-clip.mp3">
+    Your browser does not support audio playback.
+  </audio>
+</div>
+<div class="preview-note">Four real WrenTech offerings at four real price points · <strong>Scott picks what fits his budget &amp; goals.</strong></div>
+
+<main class="options">
+
+<!-- ============ TIER 0 · CARD · $1,000 ============ -->
+<section class="option tier-Z" data-id="Z">
+  <div class="tier-banner banner">
+    <span><strong>TIER 0 · CARD · $1,000</strong> — Single-page digital business card. Phone, hours, services, location, one review. Mobile responsive. SEO meta tags.</span>
+    <span>Live in 2–3 business days</span>
+  </div>
+  <div class="z-top">
+    <span>★★★★★ Family Owned · Greeneville TN · Est. 1975</span>
+    <a>Call (423) 639-1901</a>
+  </div>
+  <header class="z-head">
+    <div class="brand">
+      <div class="jf-emblem">JF</div>
+      <div>
+        <div class="nm">Jaynes Flooring</div>
+        <span class="est">3245 E. Andrew Johnson Hwy · Greeneville, TN</span>
+      </div>
+    </div>
+    <div class="phone">(423) 639-1901<small>Mon–Fri 8–5 · Sat 9–1</small></div>
+  </header>
+  <section class="z-hero">
+    <div class="k">— Family Owned · Greeneville, Tennessee —</div>
+    <h1>Floors done <em>right</em> since 1975.</h1>
+    <p>Hardwood, carpet, LVP, tile — installed beautifully by our own family crew. Mohawk Five-Star Retailer. East Tennessee's largest showroom.</p>
+    <div class="actions">
+      <a class="btn-1">Call for a Free Quote</a>
+      <a class="btn-2">Get Directions</a>
+    </div>
+  </section>
+  <section class="z-services">
+    <h2>What we <em>install</em></h2>
+    <div class="z-srv-list">
+      <div class="z-srv">Hardwood</div>
+      <div class="z-srv">LVP &amp; Vinyl</div>
+      <div class="z-srv">Carpet</div>
+      <div class="z-srv">Tile &amp; Stone</div>
+      <div class="z-srv">Laminate</div>
+      <div class="z-srv">Commercial</div>
+    </div>
+  </section>
+  <section class="z-info">
+    <div class="item">
+      <div class="lb">Visit Us</div>
+      <div class="v"><strong>3245 E. Andrew Johnson Hwy</strong>Greeneville, TN 37745</div>
+    </div>
+    <div class="item">
+      <div class="lb">Call Us</div>
+      <div class="v"><strong>(423) 639-1901</strong>Free quotes, no pressure</div>
+    </div>
+    <div class="item">
+      <div class="lb">Hours</div>
+      <div class="v"><strong>Mon–Fri 8–5</strong>Saturday 9–1 · Sunday Closed</div>
+    </div>
+  </section>
+  <section class="z-rev">
+    <div class="stars">★ ★ ★ ★ ★</div>
+    <p>"Sydney was very helpful. Scott promptly came out and measured. The installers were really nice guys. Can't ask for better customer service. That's how you do business in a small town."</p>
+    <div class="who">— Tina H. · Chuckey, TN · 2025</div>
+  </section>
+  <div class="z-map">
+    <div class="pin">Jaynes Flooring · Greeneville TN</div>
+  </div>
+  <div class="z-footer">© Jaynes Flooring · Greeneville TN · Built by <span>WrenTech</span></div>
+</section>
+
+<!-- ============ TIER 1 · FOUNDATION · $3,000 ============ -->
+<section class="option tier-A" data-id="A">
+  <div class="tier-banner banner">
+    <span><strong>TIER 1 · FOUNDATION · $3,000</strong> — 5-page custom site, brand-integrated, mobile-responsive, SEO + Google Business Profile</span>
+    <span>Site is live in 5–7 business days</span>
+  </div>
+  <nav class="a-nav">
+    <div class="brand">
+      <div class="jf-emblem">JF</div>
+      <div>
+        <div class="nm">Jaynes Flooring</div>
+        <span class="est">Greeneville TN · Est. 1975</span>
+      </div>
+    </div>
+    <ul><li><a>Home</a></li><li><a>Services</a></li><li><a>About</a></li><li><a>Reviews</a></li><li><a>Contact</a></li></ul>
+    <a class="cta">Free Quote</a>
+  </nav>
+  <section class="a-hero">
+    <div>
+      <div class="k">Family Owned · Greeneville, Tennessee</div>
+      <h1>Floors done <em>right</em> for fifty years.</h1>
+      <p>A family-owned flooring shop in Greeneville, Tennessee. Hardwood, carpet, LVP, tile — installed by our own crew, backed by half a century of work in Greene County.</p>
+      <div class="actions">
+        <a class="btn-1">Request a Free Quote</a>
+        <a class="btn-2">Call (423) 639-1901</a>
+      </div>
+    </div>
+    <div class="a-hero-img"></div>
+  </section>
+  <section class="a-services">
+    <div class="head">
+      <div class="k">What We Install</div>
+      <h2>Six categories. <em>One standard.</em></h2>
+      <p class="sub">Every floor we install gets the same attention to detail, the same crew, and the same fifty-year reputation.</p>
+    </div>
+    <div class="a-srv-grid">
+      <div class="a-srv"><div class="num">i.</div><h3>Hardwood</h3><p>Solid &amp; engineered hardwood. Century, Shaw, Mohawk. New installs and refinishing.</p></div>
+      <div class="a-srv"><div class="num">ii.</div><h3>LVP &amp; Vinyl</h3><p>Waterproof luxury vinyl. Pet- and family-tested. Beautiful in any room.</p></div>
+      <div class="a-srv"><div class="num">iii.</div><h3>Carpet</h3><p>Apartment-grade to top-of-the-line Karastan. Every budget covered.</p></div>
+      <div class="a-srv"><div class="num">iv.</div><h3>Tile &amp; Stone</h3><p>Ceramic, porcelain, natural stone. Marazzi, InterCeramic, Florim.</p></div>
+      <div class="a-srv"><div class="num">v.</div><h3>Laminate</h3><p>Pergo &amp; Mohawk laminate. Hardwood looks, smarter prices.</p></div>
+      <div class="a-srv"><div class="num">vi.</div><h3>Commercial</h3><p>Durkan, Bigelow, Beaulieu — heavy-traffic flooring for businesses.</p></div>
+    </div>
+  </section>
+  <section class="a-about">
+    <div class="a-about-grid">
+      <div>
+        <div class="k">Our Story</div>
+        <h2>Fifty years.<br>One <em>family.</em><br>Greene County.</h2>
+        <p>Scott Jaynes opened the first showroom on East Andrew Johnson Highway in 1975 with a simple promise: install every floor like it was going into our own home.</p>
+        <p>Five decades later, that promise still defines us. Family owned. Mohawk Five-Star Retailer. Largest showroom in East Tennessee.</p>
+      </div>
+      <div class="a-about-pic"></div>
+    </div>
+  </section>
+  <section class="a-reviews">
+    <div class="head">
+      <div class="k">What our customers say</div>
+      <h2>Five stars. <em>Every time.</em></h2>
+    </div>
+    <div class="a-rev-grid">
+      <div class="a-rev"><div class="stars">★★★★★</div><p>"Sydney was very helpful. Scott promptly came out and measured. The installers were really nice guys. Can't ask for better customer service."</p><div class="who">Tina H.</div><div class="when">Chuckey, TN · 2025</div></div>
+      <div class="a-rev"><div class="stars">★★★★★</div><div class="text"><p>"Jaynes had the best selection. The installers came when they said they would and did a great job. They cleaned up after the job too."</p></div><div class="who">Karen L.</div><div class="when">Greeneville, TN · 2025</div></div>
+      <div class="a-rev"><div class="stars">★★★★★</div><p>"Every salesperson was knowledgeable, patient, and helpful. We paid less than at a big box store and supported a local business."</p><div class="who">Kara W.</div><div class="when">Greeneville, TN · 2024</div></div>
+      <div class="a-rev"><div class="stars">★★★★★</div><p>"Jaynes understood from the get go. The pricing was fair, the installer was on time, and the install went perfect."</p><div class="who">Chris M.</div><div class="when">Irvine, CA · 2021</div></div>
+    </div>
+  </section>
+  <section class="a-contact">
+    <h2>Come <em>visit</em> us.</h2>
+    <p>Walk into the largest flooring showroom in East Tennessee. Free estimates. No pressure. No surprises.</p>
+    <div class="a-contact-info">
+      <div class="a-ci"><strong>Showroom</strong><p>3245 E. Andrew Johnson Hwy<br>Greeneville, TN 37745</p></div>
+      <div class="a-ci"><strong>Phone</strong><p>(423) 639-1901</p></div>
+      <div class="a-ci"><strong>Hours</strong><p>Mon–Fri 8 – 5<br>Saturday 9 – 1</p></div>
+    </div>
+  </section>
+  <div class="a-footer">© Jaynes Flooring · Greeneville TN · Built by <span>WrenTech</span></div>
+</section>
+
+<!-- ============ TIER 2 · GROWTH · $8,000 ============ -->
+<section class="option tier-B" data-id="B">
+  <div class="tier-banner banner">
+    <span><strong>TIER 2 · GROWTH · $8,000–$12,000</strong> — Everything in Foundation, plus team, gallery, brands, lead-capture form, Facebook + Instagram setup, AI search visibility</span>
+    <span>Live in 10–14 business days</span>
+  </div>
+  <nav class="b-nav">
+    <div class="brand">
+      <div class="jf-emblem">JF</div>
+      <div>
+        <div class="nm">Jaynes Flooring</div>
+        <span class="est">Greeneville TN · Est. 1975</span>
+      </div>
+    </div>
+    <ul><li><a>Home</a></li><li><a>Services</a></li><li><a>Gallery</a></li><li><a>Team</a></li><li><a>Reviews</a></li><li><a>Visit</a></li></ul>
+    <a class="cta">Get a Quote</a>
+  </nav>
+  <section class="b-hero">
+    <div class="row1">
+      <div>
+        <div class="k">Family Owned · Greeneville, Tennessee · Est. 1975</div>
+        <h1>Beautifully installed. <em>Fairly</em> priced. Always on time.</h1>
+        <p>Fifty years of flooring in Greene County. Hardwood, carpet, LVP, tile — done right by a family who's done it for generations.</p>
+        <div class="actions">
+          <a class="btn-1">Request a free quote</a>
+          <a class="btn-2">Call (423) 639-1901</a>
+        </div>
+      </div>
+      <div class="b-hero-img"></div>
+    </div>
+    <div class="b-trust">
+      <div class="item"><div class="ico">50</div><div class="lb">Years</div><div class="det">Family owned in Greene County</div></div>
+      <div class="item"><div class="ico">12</div><div class="lb">Crew</div><div class="det">No subcontractors</div></div>
+      <div class="item"><div class="ico">M5</div><div class="lb">Mohawk 5-Star</div><div class="det">Certified retailer</div></div>
+      <div class="item"><div class="ico">★</div><div class="lb">5-Star Rated</div><div class="det">Yelp · verified reviews</div></div>
+    </div>
+  </section>
+  <section class="b-services">
+    <div class="head">
+      <div class="k">What We Install</div>
+      <h2>Six categories. <em>One standard.</em></h2>
+    </div>
+    <div class="b-srv-grid">
+      <div class="b-srv"><div class="num">01</div><h3>Hardwood</h3><p>Solid &amp; engineered hardwood. Century, Shaw, Mohawk. New installs and refinishing.</p></div>
+      <div class="b-srv"><div class="num">02</div><h3>LVP &amp; Vinyl</h3><p>Waterproof luxury vinyl. Pet- and family-tested. Beautiful in any room.</p></div>
+      <div class="b-srv"><div class="num">03</div><h3>Carpet</h3><p>Apartment-grade to top-of-the-line Karastan. Every budget covered.</p></div>
+      <div class="b-srv"><div class="num">04</div><h3>Tile &amp; Stone</h3><p>Ceramic, porcelain, natural stone. Marazzi, InterCeramic, Florim.</p></div>
+      <div class="b-srv"><div class="num">05</div><h3>Laminate</h3><p>Pergo &amp; Mohawk laminate. Hardwood looks, smarter prices.</p></div>
+      <div class="b-srv"><div class="num">06</div><h3>Commercial</h3><p>Durkan, Bigelow, Beaulieu — heavy-traffic flooring for businesses.</p></div>
+    </div>
+  </section>
+  <section class="b-gallery">
+    <div class="head">
+      <div class="k">Recent Installs</div>
+      <h2>Before. After. <em>Beautiful.</em></h2>
+    </div>
+    <div class="b-gal-grid">
+      <div class="b-gal"><div class="cap"><div class="t">Featured Install</div><div class="n">Herringbone Hardwood</div></div></div>
+      <div class="b-gal"><div class="cap"><div class="t">Tile</div><div class="n">Kitchen Backsplash</div></div></div>
+      <div class="b-gal"><div class="cap"><div class="t">LVP</div><div class="n">Living Room</div></div></div>
+      <div class="b-gal"><div class="cap"><div class="t">Carpet</div><div class="n">Master Bedroom</div></div></div>
+      <div class="b-gal"><div class="cap"><div class="t">Commercial</div><div class="n">Greene Co. Office</div></div></div>
+    </div>
+  </section>
+  <section class="b-team">
+    <div class="head">
+      <div class="k">The Crew</div>
+      <h2>Twelve neighbors. <em>One business.</em></h2>
+    </div>
+    <div class="b-team-grid">
+      <div class="b-mem"><div class="av photo scott">S</div><div class="nm">Scott</div><div class="rl">Owner</div></div>
+      <div class="b-mem"><div class="av photo faye">F</div><div class="nm">Faye</div><div class="rl">Operations</div></div>
+      <div class="b-mem"><div class="av photo sydney">S</div><div class="nm">Sydney</div><div class="rl">Showroom</div></div>
+      <div class="b-mem"><div class="av">M</div><div class="nm">Mark</div><div class="rl">Sales</div></div>
+      <div class="b-mem"><div class="av">J</div><div class="nm">Jeff</div><div class="rl">Sales</div></div>
+      <div class="b-mem"><div class="av">S</div><div class="nm">Sierra</div><div class="rl">Sales</div></div>
+      <div class="b-mem"><div class="av">B</div><div class="nm">Bobby</div><div class="rl">Sales</div></div>
+      <div class="b-mem"><div class="av">A</div><div class="nm">Andrew</div><div class="rl">Installer</div></div>
+      <div class="b-mem"><div class="av">D</div><div class="nm">Danny</div><div class="rl">Installer</div></div>
+      <div class="b-mem"><div class="av">H</div><div class="nm">Harley</div><div class="rl">Installer</div></div>
+      <div class="b-mem"><div class="av">P</div><div class="nm">Phil</div><div class="rl">Installer</div></div>
+      <div class="b-mem"><div class="av">R</div><div class="nm">Roberto</div><div class="rl">Installer</div></div>
+    </div>
+  </section>
+  <section class="b-brands">
+    <div class="head">
+      <div class="k">Brands We Carry</div>
+      <h3>Every major name. One showroom.</h3>
+    </div>
+    <div class="b-brand-grid">
+      <div class="b-brand">Mohawk</div><div class="b-brand">Shaw</div><div class="b-brand">Karastan</div><div class="b-brand">Pergo</div><div class="b-brand">Beaulieu</div><div class="b-brand">Bigelow</div><div class="b-brand">Durkan</div><div class="b-brand">Congoleum</div><div class="b-brand">Marazzi</div><div class="b-brand">InterCeramic</div><div class="b-brand">Century</div><div class="b-brand">Amtico</div><div class="b-brand">IVC</div><div class="b-brand">+ More</div>
+    </div>
+  </section>
+  <section class="b-quote">
+    <div class="b-quote-wrap">
+      <div>
+        <div class="k">Free Estimates</div>
+        <h2>Request a <em>quote.</em></h2>
+        <p class="lede">Tell us about your project. We'll come measure, bring samples to your space, and write you a no-pressure quote.</p>
+        <div class="b-quote-info">
+          <strong>Showroom</strong><p>3245 E. Andrew Johnson Hwy · Greeneville TN</p>
+          <strong>Phone</strong><p>(423) 639-1901</p>
+          <strong>Hours</strong><p>Mon–Fri 8–5 · Sat 9–1</p>
+        </div>
+      </div>
+      <form class="b-form" onsubmit="event.preventDefault();">
+        <h3>Tell us about your project</h3>
+        <div class="row">
+          <div><label>First Name</label><input type="text" placeholder="Your name"></div>
+          <div><label>Last Name</label><input type="text" placeholder="Last name"></div>
+        </div>
+        <div class="row">
+          <div><label>Phone</label><input type="tel" placeholder="(423) 555-1234"></div>
+          <div><label>Email</label><input type="email" placeholder="you@email.com"></div>
+        </div>
+        <div class="row">
+          <div class="full"><label>Type of Floor</label><select><option>Hardwood</option><option>LVP / Vinyl</option><option>Carpet</option><option>Tile &amp; Stone</option><option>Laminate</option><option>Not sure yet</option></select></div>
+        </div>
+        <div class="row">
+          <div class="full"><label>Tell us about your project</label><textarea placeholder="Rooms, square footage, timing..."></textarea></div>
+        </div>
+        <button class="submit">Request My Free Quote →</button>
+      </form>
+    </div>
+  </section>
+  <section class="b-social-bar">
+    <div class="text"><em>Follow us</em> for install updates and showroom news.</div>
+    <div class="icons">
+      <div class="ico">f</div>
+      <div class="ico">IG</div>
+    </div>
+  </section>
+  <div class="b-footer">© Jaynes Flooring · Greeneville TN · Built by <span>WrenTech</span></div>
+</section>
+
+<!-- ============ TIER 3 · SIGNATURE · $28,000 ============ -->
+<section class="option tier-C" data-id="C">
+  <div class="tier-banner banner">
+    <span><strong>TIER 3 · SIGNATURE · $28,000</strong> — Everything in Growth, plus Custom Sample-Ordering Software, 20-second Commercial Spot, TikTok added, Market Intelligence Report, Training Session</span>
+    <span>Live in 4–6 weeks</span>
+  </div>
+  <nav class="c-nav">
+    <div class="crest">
+      <div class="jf-emblem lg">JF</div>
+      <div>
+        <div class="name">Jaynes Flooring</div>
+        <span class="est">Family Owned · Since 1975 · Greeneville TN</span>
+      </div>
+    </div>
+    <ul><li><a>Work</a></li><li><a>Services</a></li><li><a>Heritage</a></li><li><a>Crew</a></li><li><a>Samples</a></li></ul>
+    <a class="cta">Get a Free Quote</a>
+  </nav>
+  <section class="c-hero">
+    <div class="k">— Family Owned · Greeneville, Tennessee · Est. 1975 —</div>
+    <h1>The floor <em>makes</em><br>the room.</h1>
+    <div class="row">
+      <p>Half a century of family craftsmanship in East Tennessee. Hardwood, carpet, tile, LVP — installed beautifully by our own crew. Mohawk Five-Star Retailer. Largest showroom east of Knoxville.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">50</div><div class="l">Years</div></div>
+        <div class="stat"><div class="n">12</div><div class="l">Crew</div></div>
+        <div class="stat"><div class="n">★★★★★</div><div class="l">Rated</div></div>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="btn-1">Request a free quote</a>
+      <a class="btn-2">Order free samples</a>
+    </div>
+  </section>
+  <div class="c-bento">
+    <div class="c-tile c-tile-1"><div class="t">Featured Install · 2026</div><div class="h">Herringbone hardwood in a <em>Greeneville estate</em></div></div>
+    <div class="c-tile c-tile-2"><div class="h">"That's how you do business <em>in a small town.</em>"</div><div class="c">— Tina H. · Chuckey, TN · Sept 2025</div></div>
+    <div class="c-tile c-tile-3"><div class="n">50</div><div class="l">Years in Greene County</div></div>
+    <div class="c-tile c-tile-4"><div class="h">What we install</div><ul><li>Hardwood</li><li>LVP &amp; Vinyl</li><li>Carpet</li><li>Tile &amp; Stone</li><li>Laminate</li><li>Commercial</li></ul></div>
+    <div class="c-tile c-tile-5"><div class="l">Brands we carry</div><div class="marquee">Mohawk · Shaw · Karastan · Pergo · Beaulieu</div></div>
+    <div class="c-tile c-tile-6"><div class="h">Walk in. Walk out inspired.</div><div class="arrow">→</div></div>
+  </div>
+  <section class="c-trust">
+    <div class="c-trust-row">
+      <div class="c-trust-item"><div class="ico">★</div><div class="lb">Family Owned</div><div class="det">Three generations serving Greene County since 1975</div></div>
+      <div class="c-trust-item"><div class="ico">50</div><div class="lb">Years Strong</div><div class="det">East Tennessee's most experienced installers</div></div>
+      <div class="c-trust-item"><div class="ico">M5</div><div class="lb">Mohawk Five-Star</div><div class="det">Certified retailer of America's #1 brand</div></div>
+      <div class="c-trust-item"><div class="ico">$0</div><div class="lb">Free Estimates</div><div class="det">No-pressure measurements in your home</div></div>
+    </div>
+  </section>
+  <section class="c-samples">
+    <div class="c-samples-wrap">
+      <div>
+        <div class="k">Custom Sample-Ordering Software</div>
+        <h2>Order samples <em>from your couch.</em></h2>
+        <p>Customers browse 30 samples across 6 product categories, pick up to 5, fill out a quick form, and Scott ships them out from the showroom — free of charge. Every sample order is a named lead with a shipping address.</p>
+        <a class="btn" onclick="openSampleModal()" style="cursor:pointer;">Try it now → Order Free Samples</a>
+      </div>
+      <div class="c-sample-preview">
+        <div class="label">Sample Box · 5 of 5 selected</div>
+        <div class="grid">
+          <div class="swatch"></div><div class="swatch"></div><div class="swatch"></div><div class="swatch"></div><div class="swatch"></div>
+        </div>
+        <div class="row">
+          <div class="cart">5 samples · Free shipping</div>
+          <div class="checkout">Checkout →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="c-commercial">
+    <div class="head">
+      <div class="k">20-Second Commercial Spot</div>
+      <h2>Branded for TV, social, and the web — <em>included.</em></h2>
+    </div>
+    <div class="c-com-frame"></div>
+  </section>
+  <section class="c-team">
+    <div class="c-team-h">
+      <h2>The <em>crew.</em></h2>
+      <p>Twelve people. One family business. Same folks measuring, selling, and installing every floor.</p>
+    </div>
+    <div class="c-team-grid">
+      <div class="c-mem"><div class="av photo scott">S</div><div class="nm">Scott</div><div class="rl">Owner</div></div>
+      <div class="c-mem"><div class="av photo faye">F</div><div class="nm">Faye</div><div class="rl">Ops</div></div>
+      <div class="c-mem"><div class="av photo sydney">S</div><div class="nm">Sydney</div><div class="rl">Showroom</div></div>
+      <div class="c-mem"><div class="av">M</div><div class="nm">Mark</div><div class="rl">Sales</div></div>
+      <div class="c-mem"><div class="av">J</div><div class="nm">Jeff</div><div class="rl">Sales</div></div>
+      <div class="c-mem"><div class="av">S</div><div class="nm">Sierra</div><div class="rl">Sales</div></div>
+      <div class="c-mem"><div class="av">B</div><div class="nm">Bobby</div><div class="rl">Sales</div></div>
+      <div class="c-mem"><div class="av">A</div><div class="nm">Andrew</div><div class="rl">Installer</div></div>
+      <div class="c-mem"><div class="av">D</div><div class="nm">Danny</div><div class="rl">Installer</div></div>
+      <div class="c-mem"><div class="av">H</div><div class="nm">Harley</div><div class="rl">Installer</div></div>
+      <div class="c-mem"><div class="av">P</div><div class="nm">Phil</div><div class="rl">Installer</div></div>
+      <div class="c-mem"><div class="av">R</div><div class="nm">Roberto</div><div class="rl">Installer</div></div>
+    </div>
+  </section>
+  <section class="c-cta">
+    <h2>Come <em>see</em> us.</h2>
+    <p>Walk into the largest flooring showroom in East Tennessee. Free estimates, no pressure, no surprises on installation day.</p>
+    <a class="btn">Request Your Free Quote →</a>
+  </section>
+  <div class="c-footer">© Jaynes Flooring · Greeneville TN · Built by <span>WrenTech</span></div>
+</section>
+
+<!-- ============ COMPARISON / PICK YOUR TIER ============ -->
+<section class="option compare" data-id="X">
+  <div class="head">
+    <div class="k">Four WrenTech Offerings</div>
+    <h2>Pick the <em>tier</em> that fits.</h2>
+    <p>Four real options. All built from scratch by WrenTech. Each one is a polished, professional Jaynes Flooring site at its own scope. No template recycling, no monthly retainers — you own the work outright.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="name">Tier 0 · Card</div>
+      <div class="price">$1,000<small> · flat</small></div>
+      <div class="pitch">A single-page digital business card. Phone, hours, services, location, one customer review.</div>
+      <div class="pages">1 page · live in 2–3 days</div>
+      <ul>
+        <li>Single-page Jaynes site</li>
+        <li>JF logo &amp; brand colors</li>
+        <li>Phone &amp; address prominent</li>
+        <li>Services list</li>
+        <li>Hours of operation</li>
+        <li>One featured review</li>
+        <li>Embedded map</li>
+        <li>Mobile responsive</li>
+        <li>Basic SEO meta tags</li>
+        <li>Deployed live</li>
+        <li class="no">No services pages</li>
+        <li class="no">No gallery</li>
+        <li class="no">No quote form</li>
+        <li class="no">No social setup</li>
+      </ul>
+      <a class="pick">Choose Card →</a>
+    </div>
+    <div class="card">
+      <div class="name">Tier 1 · Foundation</div>
+      <div class="price">$3,000<small> · flat</small></div>
+      <div class="pitch">A polished 5-page website that gets Jaynes findable on Google and looking right on every phone.</div>
+      <div class="pages">5 pages · live in 5–7 days</div>
+      <ul>
+        <li>5-page custom website (Home, Services, About, Reviews, Contact)</li>
+        <li>JF logo &amp; brand integration (blue + red)</li>
+        <li>Mobile-responsive across all devices</li>
+        <li>On-page SEO foundation</li>
+        <li>Google Business Profile setup</li>
+        <li>Quote-request contact form</li>
+        <li>Photo gallery (you provide photos)</li>
+        <li>Deployment to live hosting (free tier)</li>
+        <li>One round of revisions</li>
+        <li class="no">No sample-ordering software</li>
+        <li class="no">No commercial spot</li>
+        <li class="no">No social media setup</li>
+      </ul>
+      <a class="pick">Choose Foundation →</a>
+    </div>
+    <div class="card recommended">
+      <div class="name">Tier 2 · Growth</div>
+      <div class="price">$8K–$12K<small> · scope-based</small></div>
+      <div class="pitch">Everything in Foundation, plus the digital presence to start outpacing every competitor in the Tri-Cities.</div>
+      <div class="pages">7 pages + 2 social platforms · live in 10–14 days</div>
+      <ul>
+        <li>Everything in Foundation, plus:</li>
+        <li>7-page site (adds Team &amp; Heritage)</li>
+        <li>Premium design with photo treatments</li>
+        <li>Advanced SEO + AI search visibility (ChatGPT, Claude, Perplexity)</li>
+        <li>Trust signals &amp; credibility badges</li>
+        <li>Photo gallery with categories</li>
+        <li>Full team showcase (all 12 members)</li>
+        <li>Brands carried showcase</li>
+        <li>Lead-capture quote form with email routing</li>
+        <li>Facebook + Instagram business setup</li>
+        <li>Two rounds of revisions</li>
+        <li class="no">No sample-ordering software</li>
+        <li class="no">No commercial spot</li>
+      </ul>
+      <a class="pick">Choose Growth →</a>
+    </div>
+    <div class="card">
+      <div class="name">Tier 3 · Signature</div>
+      <div class="price">$28,000<small> · flat</small></div>
+      <div class="pitch">The full WrenTech build. Everything Jaynes needs to dominate East Tennessee digital — owned outright, no retainer.</div>
+      <div class="pages">10+ pages + 3 social platforms + commercial + SaaS · 4–6 weeks</div>
+      <ul>
+        <li>Everything in Growth, plus:</li>
+        <li>Premium bento-grid editorial layout</li>
+        <li>Custom animations &amp; micro-interactions</li>
+        <li><strong>Custom Sample-Ordering Software (mini-SaaS)</strong></li>
+        <li><strong>20-second branded commercial spot + social cuts</strong></li>
+        <li>TikTok added (3 social platforms total)</li>
+        <li><strong>11-page Market Intelligence Report</strong></li>
+        <li>Live training &amp; handoff session</li>
+        <li>USPS Click-N-Ship / Shippo integration</li>
+        <li>Admin dashboard with order management</li>
+        <li>Auto-tracking customer emails</li>
+        <li>Three rounds of revisions</li>
+      </ul>
+      <a class="pick">Choose Signature →</a>
+    </div>
+  </div>
+  <div class="strategy">
+    <div class="k">— Why three tiers —</div>
+    <h3>Same builder. Same brand. <em>Three different scopes.</em></h3>
+    <p>Each tier is a complete, deployable Jaynes Flooring website built from scratch by WrenTech — not a template, not a copy of another flooring site. Foundation gets Jaynes findable. Growth makes Jaynes competitive. Signature makes Jaynes the digital leader in East Tennessee flooring. Pick the one that matches what Jaynes wants to invest right now — and any tier can be upgraded later by paying the difference plus a small add-on fee.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FUNCTIONAL SAMPLE-ORDERING MODAL ============ -->
+<div class="sample-modal" id="sampleModal">
+  <div class="panel">
+    <div class="head">
+      <h3>Order Free Samples</h3>
+      <div style="display:flex; align-items:center;">
+        <div class="cart-pill" id="cartPill">0 of 5 selected</div>
+        <button class="close" onclick="closeSampleModal()">×</button>
+      </div>
+    </div>
+
+    <div class="body" id="sampleBody">
+      <div class="intro">
+        Pick up to 5 samples from our top sellers. We'll ship them free to your door — no charge, no obligation. Most orders arrive in 3–5 business days.
+      </div>
+
+      <div class="category">
+        <div class="cat-h">Hardwood — Top 5</div>
+        <div class="swatches">
+          <div class="swatch" data-type="hw"     onclick="toggleSwatch(this)"><span class="nm">Oak · Natural</span></div>
+          <div class="swatch" data-type="hw-2"   onclick="toggleSwatch(this)"><span class="nm">Walnut · Smoked</span></div>
+          <div class="swatch" data-type="hw-3"   onclick="toggleSwatch(this)"><span class="nm">Hickory · Honey</span></div>
+          <div class="swatch" data-type="hw-4"   onclick="toggleSwatch(this)"><span class="nm">Maple · Toffee</span></div>
+          <div class="swatch" data-type="hw-5"   onclick="toggleSwatch(this)"><span class="nm">Cherry · Deep</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="cat-h">LVP &amp; Vinyl — Top 5</div>
+        <div class="swatches">
+          <div class="swatch" data-type="lvp"   onclick="toggleSwatch(this)"><span class="nm">Driftwood Grey</span></div>
+          <div class="swatch" data-type="lvp-2" onclick="toggleSwatch(this)"><span class="nm">Pecan Plank</span></div>
+          <div class="swatch" data-type="lvp-3" onclick="toggleSwatch(this)"><span class="nm">Espresso Wide</span></div>
+          <div class="swatch" data-type="lvp-4" onclick="toggleSwatch(this)"><span class="nm">Cottage Cream</span></div>
+          <div class="swatch" data-type="lvp-5" onclick="toggleSwatch(this)"><span class="nm">Smokehouse</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="cat-h">Carpet — Top 5</div>
+        <div class="swatches">
+          <div class="swatch" data-type="carp"   onclick="toggleSwatch(this)"><span class="nm">Linen Berber</span></div>
+          <div class="swatch" data-type="carp-2" onclick="toggleSwatch(this)"><span class="nm">Stone Plush</span></div>
+          <div class="swatch" data-type="carp-3" onclick="toggleSwatch(this)"><span class="nm">Charcoal Cut</span></div>
+          <div class="swatch" data-type="carp-4" onclick="toggleSwatch(this)"><span class="nm">Wheat Frieze</span></div>
+          <div class="swatch" data-type="carp-5" onclick="toggleSwatch(this)"><span class="nm">Pecan Loop</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="cat-h">Tile &amp; Stone — Top 5</div>
+        <div class="swatches">
+          <div class="swatch" data-type="tile"   onclick="toggleSwatch(this)"><span class="nm">Travertine Cream</span></div>
+          <div class="swatch" data-type="tile-2" onclick="toggleSwatch(this)"><span class="nm">Slate Blue</span></div>
+          <div class="swatch" data-type="tile-3" onclick="toggleSwatch(this)"><span class="nm">Marble Carrera</span></div>
+          <div class="swatch" data-type="tile-4" onclick="toggleSwatch(this)"><span class="nm">Granite Coastal</span></div>
+          <div class="swatch" data-type="tile-5" onclick="toggleSwatch(this)"><span class="nm">Limestone Sand</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="cat-h">Laminate — Top 5</div>
+        <div class="swatches">
+          <div class="swatch" data-type="lam"   onclick="toggleSwatch(this)"><span class="nm">Honey Oak Wide</span></div>
+          <div class="swatch" data-type="lam-2" onclick="toggleSwatch(this)"><span class="nm">Walnut Deep</span></div>
+          <div class="swatch" data-type="lam-3" onclick="toggleSwatch(this)"><span class="nm">Maple Bright</span></div>
+          <div class="swatch" data-type="lam-4" onclick="toggleSwatch(this)"><span class="nm">Pecan Cabin</span></div>
+          <div class="swatch" data-type="lam-5" onclick="toggleSwatch(this)"><span class="nm">Espresso Plank</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="cat-h">Commercial — Top 5</div>
+        <div class="swatches">
+          <div class="swatch" data-type="com"   onclick="toggleSwatch(this)"><span class="nm">Slate Loop</span></div>
+          <div class="swatch" data-type="com-2" onclick="toggleSwatch(this)"><span class="nm">Office Navy</span></div>
+          <div class="swatch" data-type="com-3" onclick="toggleSwatch(this)"><span class="nm">Storm Grey</span></div>
+          <div class="swatch" data-type="com-4" onclick="toggleSwatch(this)"><span class="nm">Sage Pro</span></div>
+          <div class="swatch" data-type="com-5" onclick="toggleSwatch(this)"><span class="nm">Granite Dark</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHECKOUT FORM -->
+    <div class="checkout-form" id="checkoutForm">
+      <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:22px; color:#1B3A8C; margin:0 0 20px;">Where should we send your samples?</h3>
+      <div class="row">
+        <div><label>First Name</label><input id="fn" type="text" placeholder="Your name"></div>
+        <div><label>Last Name</label><input id="ln" type="text" placeholder="Last name"></div>
+      </div>
+      <div class="row">
+        <div><label>Phone</label><input id="ph" type="tel" placeholder="(423) 555-1234"></div>
+        <div><label>Email</label><input id="em" type="email" placeholder="you@email.com"></div>
+      </div>
+      <div class="row"><div class="full"><label>Shipping Address</label><input id="addr" type="text" placeholder="Street address, City, State, ZIP"></div></div>
+      <button class="submit-btn" onclick="submitOrder()">Send My Free Samples →</button>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success" id="successPanel">
+      <div class="check">✓</div>
+      <h3>Samples on the way, <em>neighbor.</em></h3>
+      <p>Scott just got your order. He'll pull your samples this afternoon and drop them at the post office. Most orders arrive in 3–5 business days. Watch your email for tracking.</p>
+      <button class="done-btn" onclick="closeSampleModal()">Done</button>
+    </div>
+
+    <div class="foot" id="modalFoot">
+      <div class="summary"><strong id="cartCount">0</strong> sample<span id="cartPlural">s</span> selected · ships free</div>
+      <button class="checkout" id="checkoutBtn" disabled onclick="goToCheckout()">Checkout →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Tab switcher
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const opt = tab.dataset.opt;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.option').forEach(o => o.classList.toggle('active', o.dataset.id === opt));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// Sample ordering modal logic
+let selected = [];
+const MAX = 5;
+
+function openSampleModal() {
+  document.getElementById('sampleModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Reset to picker view
+  document.getElementById('sampleBody').style.display = 'block';
+  document.getElementById('checkoutForm').classList.remove('open');
+  document.getElementById('successPanel').classList.remove('open');
+  document.getElementById('modalFoot').style.display = 'flex';
+}
+function closeSampleModal() {
+  document.getElementById('sampleModal').classList.remove('open');
+  document.body.style.overflow = '';
+  // Clear cart
+  selected = [];
+  document.querySelectorAll('.sample-modal .swatch.selected').forEach(s => s.classList.remove('selected'));
+  updateCart();
+}
+function toggleSwatch(el) {
+  const id = el.dataset.type;
+  if (el.classList.contains('selected')) {
+    el.classList.remove('selected');
+    selected = selected.filter(s => s !== id);
+  } else {
+    if (selected.length >= MAX) {
+      el.style.animation = 'fadeUp 0.2s';
+      setTimeout(() => el.style.animation = '', 200);
+      return;
+    }
+    el.classList.add('selected');
+    selected.push(id);
+  }
+  updateCart();
+}
+function updateCart() {
+  const n = selected.length;
+  document.getElementById('cartCount').textContent = n;
+  document.getElementById('cartPlural').textContent = n === 1 ? '' : 's';
+  document.getElementById('cartPill').textContent = n + ' of 5 selected';
+  document.getElementById('cartPill').classList.toggle('full', n === 5);
+  document.getElementById('checkoutBtn').disabled = n === 0;
+}
+function goToCheckout() {
+  document.getElementById('sampleBody').style.display = 'none';
+  document.getElementById('modalFoot').style.display = 'none';
+  document.getElementById('checkoutForm').classList.add('open');
+}
+function submitOrder() {
+  // Simple validation
+  const fn = document.getElementById('fn').value.trim();
+  const em = document.getElementById('em').value.trim();
+  const addr = document.getElementById('addr').value.trim();
+  if (!fn || !em || !addr) {
+    alert('Please fill out at least name, email, and shipping address.');
+    return;
+  }
+  document.getElementById('checkoutForm').classList.remove('open');
+  document.getElementById('successPanel').classList.add('open');
+}
+// Close on backdrop click
+document.getElementById('sampleModal').addEventListener('click', (e) => {
+  if (e.target.id === 'sampleModal') closeSampleModal();
+});
+</script>
+
+</body>
+</html>
