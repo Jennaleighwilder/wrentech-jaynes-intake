@@ -1123,6 +1123,160 @@ body { font-family:'Inter', sans-serif; background:#0E2A26; color:#EBD5CD; }
 }
 
 /* ============================================
+   TIER A SERVICE-CARD PHOTOS
+   ============================================ */
+.tier-A .a-srv { padding-top: 0 !important; overflow: hidden; }
+.tier-A .a-srv .pic {
+  display: block;
+  aspect-ratio: 16/10;
+  margin: -1px -29px 18px;
+  background-position: center; background-size: cover; background-repeat: no-repeat;
+  border-bottom: 3px solid #C41E2A;
+}
+.tier-A .a-srv:nth-child(1) .pic { background-image: url('jaynes/choice-hardwood.png'); }
+.tier-A .a-srv:nth-child(2) .pic { background-image: url('jaynes/palmetto-road.png'); }
+.tier-A .a-srv:nth-child(3) .pic { background-image: url('jaynes/leopard-stairs.png'); }
+.tier-A .a-srv:nth-child(4) .pic { background-image: url('jaynes/landmark-ceramics.png'); }
+.tier-A .a-srv:nth-child(5) .pic { background-image: url('jaynes/mosaic-tower.png'); }
+.tier-A .a-srv:nth-child(6) .pic { background-image: url('jaynes/american-olean.png'); }
+
+/* ============================================
+   TIER C BENTO PHOTOS — fill more tiles
+   ============================================ */
+.tier-C .c-tile-2 {
+  background-image: linear-gradient(135deg, rgba(15,27,51,0.78), rgba(196,30,42,0.5)), url('jaynes/gold-pattern-room.png') !important;
+  background-size: cover !important; background-position: center !important;
+  color: #fff !important;
+}
+.tier-C .c-tile-2 .h, .tier-C .c-tile-2 .c { color: #fff !important; }
+.tier-C .c-tile-3 {
+  background-image: linear-gradient(180deg, rgba(15,27,51,0.55), rgba(15,27,51,0.85)), url('jaynes/plaque-50yr.jpg') !important;
+  background-size: cover !important; background-position: center !important;
+}
+.tier-C .c-tile-5 {
+  background-image: linear-gradient(90deg, rgba(27,58,140,0.92), rgba(27,58,140,0.7)), url('jaynes/mosaic-tower.png') !important;
+  background-size: cover !important; background-position: center !important;
+}
+.tier-C .c-tile-6 {
+  background-image: linear-gradient(135deg, rgba(196,30,42,0.92), rgba(196,30,42,0.65)), url('jaynes/showroom-collage.png') !important;
+  background-size: cover !important; background-position: center !important;
+}
+
+/* Fade-in on scroll for major photo blocks (CSS-only, intersection-free) */
+@keyframes photoIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.option.active .a-hero-img,
+.option.active .b-hero-img,
+.option.active .a-about-pic,
+.option.active .c-com-frame,
+.option.active .b-gal,
+.option.active .a-srv .pic,
+.option.active .c-tile { animation: photoIn 0.9s ease-out both; }
+.option.active .b-gal:nth-child(2) { animation-delay: 0.08s; }
+.option.active .b-gal:nth-child(3) { animation-delay: 0.16s; }
+.option.active .b-gal:nth-child(4) { animation-delay: 0.24s; }
+.option.active .b-gal:nth-child(5) { animation-delay: 0.32s; }
+
+/* ============================================
+   CINEMATIC INTRO — crossfading hero banner
+   ============================================ */
+.cinema {
+  position: relative;
+  height: 78vh; min-height: 520px; max-height: 760px;
+  width: 100%;
+  overflow: hidden;
+  background: #0E2A26;
+}
+.cinema .reel { position: absolute; inset: 0; }
+.cinema .reel .frame {
+  position: absolute; inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.06);
+  animation: kenburns 30s infinite;
+  filter: brightness(0.78) saturate(1.05);
+}
+.cinema .reel .frame:nth-child(1) { background-image: url('jaynes/storefront.jpg');       animation-delay:  0s; }
+.cinema .reel .frame:nth-child(2) { background-image: url('jaynes/aerial.jpg');           animation-delay:  6s; }
+.cinema .reel .frame:nth-child(3) { background-image: url('jaynes/sign.jpg');             animation-delay: 12s; }
+.cinema .reel .frame:nth-child(4) { background-image: url('jaynes/plaque-50yr.jpg');      animation-delay: 18s; }
+.cinema .reel .frame:nth-child(5) { background-image: url('jaynes/choice-hardwood.png');  animation-delay: 24s; }
+@keyframes kenburns {
+  0%    { opacity: 0; transform: scale(1.06); }
+  6%    { opacity: 1; }
+  20%   { opacity: 1; transform: scale(1.0); }
+  26%   { opacity: 0; }
+  100%  { opacity: 0; transform: scale(1.06); }
+}
+.cinema .veil {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(14,42,38,0.35), transparent 60%),
+    linear-gradient(180deg, rgba(14,42,38,0.55) 0%, rgba(14,42,38,0.15) 40%, rgba(14,42,38,0.92) 100%);
+  z-index: 1;
+}
+.cinema .stage {
+  position: relative; z-index: 2;
+  height: 100%;
+  display: grid;
+  align-content: end;
+  padding: 0 56px 64px;
+  color: #EBD5CD;
+  max-width: 1400px; margin: 0 auto;
+}
+.cinema .stage .mark {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 18px; color: #EC8A5E; letter-spacing: 0.02em;
+  margin-bottom: 14px;
+  opacity: 0; animation: introUp 1.2s 0.4s forwards;
+}
+.cinema .stage h1 {
+  font-family: 'Fraunces', serif; font-weight: 400;
+  font-size: clamp(46px, 7vw, 92px);
+  line-height: 1.0; letter-spacing: -0.02em;
+  margin: 0 0 18px;
+  max-width: 1000px;
+  opacity: 0; animation: introUp 1.2s 0.7s forwards;
+}
+.cinema .stage h1 em { font-style: italic; color: #EC8A5E; }
+.cinema .stage p {
+  font-size: 17px; line-height: 1.6;
+  color: rgba(235,213,205,0.85);
+  max-width: 580px; margin: 0 0 26px;
+  opacity: 0; animation: introUp 1.2s 1.0s forwards;
+}
+.cinema .stage .credit {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(235,213,205,0.55); font-weight: 500;
+  display: flex; align-items: center; gap: 12px;
+  opacity: 0; animation: introUp 1.2s 1.3s forwards;
+}
+.cinema .stage .credit::before { content: ''; width: 36px; height: 1px; background: #EC8A5E; }
+@keyframes introUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.cinema .scroll-hint {
+  position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+  z-index: 3; color: rgba(235,213,205,0.6);
+  font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+  animation: bounceDown 2.4s infinite;
+}
+@keyframes bounceDown {
+  0%, 100% { transform: translate(-50%, 0); opacity: 0.45; }
+  50%      { transform: translate(-50%, 6px); opacity: 0.9; }
+}
+@media (max-width: 720px) {
+  .cinema { height: 62vh; min-height: 420px; }
+  .cinema .stage { padding: 0 24px 40px; }
+}
+
+/* ============================================
    PITCH AUDIO PLAYER (intro card)
    ============================================ */
 .pitch-card {
@@ -1165,6 +1319,24 @@ body { font-family:'Inter', sans-serif; background:#0E2A26; color:#EBD5CD; }
 </style>
 </head>
 <body>
+
+<section class="cinema" aria-label="Jaynes Flooring intro reel">
+  <div class="reel" aria-hidden="true">
+    <div class="frame"></div>
+    <div class="frame"></div>
+    <div class="frame"></div>
+    <div class="frame"></div>
+    <div class="frame"></div>
+  </div>
+  <div class="veil"></div>
+  <div class="stage">
+    <div class="mark">WrenTech for Jaynes Flooring</div>
+    <h1>Fifty years of family flooring,<br>now <em>built for the next fifty.</em></h1>
+    <p>Four real websites. Four real price points. Same family, same showroom, same crew — finally found on Google, on phones, and on every screen between Greeneville and Knoxville.</p>
+    <div class="credit">Scroll · Press play · Pick a tier</div>
+  </div>
+  <div class="scroll-hint">↓ Listen, then pick a tier</div>
+</section>
 
 <div class="shell">
   <div class="shell-top">
@@ -1300,12 +1472,12 @@ body { font-family:'Inter', sans-serif; background:#0E2A26; color:#EBD5CD; }
       <p class="sub">Every floor we install gets the same attention to detail, the same crew, and the same fifty-year reputation.</p>
     </div>
     <div class="a-srv-grid">
-      <div class="a-srv"><div class="num">i.</div><h3>Hardwood</h3><p>Solid &amp; engineered hardwood. Century, Shaw, Mohawk. New installs and refinishing.</p></div>
-      <div class="a-srv"><div class="num">ii.</div><h3>LVP &amp; Vinyl</h3><p>Waterproof luxury vinyl. Pet- and family-tested. Beautiful in any room.</p></div>
-      <div class="a-srv"><div class="num">iii.</div><h3>Carpet</h3><p>Apartment-grade to top-of-the-line Karastan. Every budget covered.</p></div>
-      <div class="a-srv"><div class="num">iv.</div><h3>Tile &amp; Stone</h3><p>Ceramic, porcelain, natural stone. Marazzi, InterCeramic, Florim.</p></div>
-      <div class="a-srv"><div class="num">v.</div><h3>Laminate</h3><p>Pergo &amp; Mohawk laminate. Hardwood looks, smarter prices.</p></div>
-      <div class="a-srv"><div class="num">vi.</div><h3>Commercial</h3><p>Durkan, Bigelow, Beaulieu — heavy-traffic flooring for businesses.</p></div>
+      <div class="a-srv"><div class="pic"></div><div class="num">i.</div><h3>Hardwood</h3><p>Solid &amp; engineered hardwood. Century, Shaw, Mohawk. New installs and refinishing.</p></div>
+      <div class="a-srv"><div class="pic"></div><div class="num">ii.</div><h3>LVP &amp; Vinyl</h3><p>Waterproof luxury vinyl. Pet- and family-tested. Beautiful in any room.</p></div>
+      <div class="a-srv"><div class="pic"></div><div class="num">iii.</div><h3>Carpet</h3><p>Apartment-grade to top-of-the-line Karastan. Every budget covered.</p></div>
+      <div class="a-srv"><div class="pic"></div><div class="num">iv.</div><h3>Tile &amp; Stone</h3><p>Ceramic, porcelain, natural stone. Marazzi, InterCeramic, Florim.</p></div>
+      <div class="a-srv"><div class="pic"></div><div class="num">v.</div><h3>Laminate</h3><p>Pergo &amp; Mohawk laminate. Hardwood looks, smarter prices.</p></div>
+      <div class="a-srv"><div class="pic"></div><div class="num">vi.</div><h3>Commercial</h3><p>Durkan, Bigelow, Beaulieu — heavy-traffic flooring for businesses.</p></div>
     </div>
   </section>
   <section class="a-about">
@@ -1400,11 +1572,11 @@ body { font-family:'Inter', sans-serif; background:#0E2A26; color:#EBD5CD; }
       <h2>Before. After. <em>Beautiful.</em></h2>
     </div>
     <div class="b-gal-grid">
-      <div class="b-gal"><div class="cap"><div class="t">Featured Install</div><div class="n">Herringbone Hardwood</div></div></div>
-      <div class="b-gal"><div class="cap"><div class="t">Tile</div><div class="n">Kitchen Backsplash</div></div></div>
-      <div class="b-gal"><div class="cap"><div class="t">LVP</div><div class="n">Living Room</div></div></div>
-      <div class="b-gal"><div class="cap"><div class="t">Carpet</div><div class="n">Master Bedroom</div></div></div>
-      <div class="b-gal"><div class="cap"><div class="t">Commercial</div><div class="n">Greene Co. Office</div></div></div>
+      <div class="b-gal"><div class="cap"><div class="t">Featured Showroom</div><div class="n">Choice Hardwood Display</div></div></div>
+      <div class="b-gal"><div class="cap"><div class="t">Tile &amp; Stone</div><div class="n">Landmark Ceramics Wall</div></div></div>
+      <div class="b-gal"><div class="cap"><div class="t">Hardwood</div><div class="n">Palmetto Road Collection</div></div></div>
+      <div class="b-gal"><div class="cap"><div class="t">Carpet</div><div class="n">Statement Stair Runner</div></div></div>
+      <div class="b-gal"><div class="cap"><div class="t">Ceramics</div><div class="n">American Olean Showroom</div></div></div>
     </div>
   </section>
   <section class="b-team">
